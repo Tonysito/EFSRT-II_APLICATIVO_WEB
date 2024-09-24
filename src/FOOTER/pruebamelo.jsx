@@ -2,4 +2,4 @@ import React from "react";
 
 
 
-let HolaMundo = 25;
+let Numero = 20;
