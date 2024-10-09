@@ -1,0 +1,13 @@
+{
+    "d_ben" :  [
+        "1 beneficio.",
+        "2 beneficio",
+        "3 beneficio",
+        "4 beneficio"
+    ],
+    "d_est" : [
+        {"titulo" : "titulo estadistica 1", "descripcion" : "descripcion estadistica 1"},
+        {"titulo" : "titulo estadistica 2", "descripcion" : "descripcion estadistica 2"},
+        {"titulo" : "titulo estadistica 3", "descripcion" : "descripcion estadistica 3"}
+    ]
+}
