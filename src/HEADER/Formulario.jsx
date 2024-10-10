@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './HEADER/Formulario.css';
+import './Formulario.css';
 
-const Registro = () => {
+const Formulario = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -128,4 +128,4 @@ const Registro = () => {
   );
 };
 
-export default Registro;
+export default Formulario;
