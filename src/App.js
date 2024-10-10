@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './FOOTER/Footer';
 import Header from './HEADER/Header';
 import MainVender from './marcosH'
-import Registro from './Registro'; 
+import Registro from './Registro';
 
 function App () {
   return (
