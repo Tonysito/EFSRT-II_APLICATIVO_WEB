@@ -3,7 +3,7 @@ import React from "react";
 const Registro = () =>{
     return(
         <div>
-            <p>Leo cmt</p>
+            <p>Pasa pe markitos chupapi</p>
         </div>
     );
 }
