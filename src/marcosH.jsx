@@ -10,7 +10,7 @@ const MainVender = () => {
     const navigate = useNavigate();
 
     const pressClick = () => {
-        navigate('/registro'); 
+        navigate('/Registro'); 
         //window.location.href = "/registro"; 
     };
 

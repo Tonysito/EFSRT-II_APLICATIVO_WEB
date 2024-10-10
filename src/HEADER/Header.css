@@ -21,8 +21,7 @@
 }
 
 .logo-header img {
-    width: 50px;
-    margin-right: 10px;
+    width: 200px;;
 }
 
 h1 {
@@ -34,7 +33,7 @@ h1 {
 /* Ajuste del tamaño del campo de búsqueda */
 .barra-busqueda-header {
     padding: 8px;
-    width: 180px; /* Ajustado para que sea más estrecho */
+    width: 38%;  /* Ajustado para que sea más estrecho */
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;

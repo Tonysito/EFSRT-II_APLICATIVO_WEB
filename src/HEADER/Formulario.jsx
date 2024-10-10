@@ -41,16 +41,19 @@ const Formulario = () => {
   };
 
   return (
-    <div className="cuenta-container">
+    <div className="cuenta-container" >
       <div className="cuenta-icon" onClick={toggleRegisterForm}>
-        <i className="fas fa-user" />
+        <i className="fas fa-user"/>
+      </div>
+      <div>
+        <span onClick={toggleRegisterForm}>Iniciar Sesión</span>
       </div>
       {mostrarFormulario &&
         <div className="overlay" onClick={toggleRegisterForm}>
           <div
             id="registro"
             className="registro-form"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="form-container">
               <p className="title">Iniciar Sesión</p>
@@ -116,7 +119,7 @@ const Formulario = () => {
                 {' '}
                 <a
                   rel="noopener noreferrer"
-                  href="https://store.steampowered.com/join"
+                  href="/Registro"
                 >
                   Crear Cuenta
                 </a>

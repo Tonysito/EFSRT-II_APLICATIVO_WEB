@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import Formulario from './Formulario';
 
 const Header = () => {
   return (
     <header className="contenedor-header">
       <div className="contenido-header">
         <div className="logo-header">
-          <img src="logo.png" alt="Logo" />
-          <h1>ComerciaPe</h1>
+          <a href="/">
+          <img src="../images/LogoPNG.png" alt="Logo" />
+          </a>
         </div>
         
         <input
@@ -36,6 +38,7 @@ const Header = () => {
           </div>
           <a href="#nosotros">Nosotros</a>
           <a href="#servicio-cliente">Servicio al Cliente</a>
+          <Formulario/>
         </nav>
       </div>
     </header>
