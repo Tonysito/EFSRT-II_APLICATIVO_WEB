@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Registro = () => {
     const [formData, setFormData] = useState({
@@ -6,7 +7,8 @@ const Registro = () => {
         password: '',
         companyName: '',
         fullName: '',
-        phone: ''
+        phone: '',
+        userType: '' // Nuevo campo para tipo de usuario
     });
 
     const [errors, setErrors] = useState({
@@ -39,7 +41,7 @@ const Registro = () => {
         }
 
         // Validar contraseña
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@$!%*?&])[A-Za-z\d#@$!%*?&]{8,}$/;
         if (!passwordRegex.test(formData.password)) {
             newErrors.passwordError = 'La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.';
             valid = false;
@@ -102,7 +104,8 @@ const Registro = () => {
                 password: '',
                 companyName: '',
                 fullName: '',
-                phone: ''
+                phone: '',
+                userType: '' // Reiniciar el tipo de usuario
             });
         } else {
             alert('Por favor, corrige los errores en el formulario.');
@@ -110,74 +113,121 @@ const Registro = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
-            <h2>Registro</h2>
-            <div>
-                <label>País/región:</label>
-                <select name="country" value="Perú" disabled>
-                    <option value="Perú">Perú</option>
-                </select>
-            </div>
-            <div>
-                <label>Correo electrónico:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                />
-                {errors.emailError && <span style={{ color: 'red' }}>{errors.emailError}</span>}
-            </div>
-            <div>
-                <label>Contraseña:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                />
-                {errors.passwordError && <span style={{ color: 'red' }}>{errors.passwordError}</span>}
-            </div>
-            <div>
-                <label>Nombre de empresa:</label>
-                <input
-                    type="text"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    required
-                />
-                {errors.companyNameError && <span style={{ color: 'red' }}>{errors.companyNameError}</span>}
-            </div>
-            <div>
-                <label>Nombre completo:</label>
-                <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                />
-                {errors.fullNameError && <span style={{ color: 'red' }}>{errors.fullNameError}</span>}
-            </div>
-            <div>
-                <label>Teléfono:</label>
-                <input
-                    type="text"
-                    name="phone"
-                    pattern="\d{9}"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    maxLength="9"
-                    placeholder="Número de 9 dígitos"
-                />
-                {errors.phoneError && <span style={{ color: 'red' }}>{errors.phoneError}</span>}
-            </div>
-            <button type="submit">Aceptación y registro</button>
-        </form>
+        <div className="container mt-5">
+            <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
+                <h2 className="mb-4">Registro</h2>
+                <div className="mb-3">
+                    <label className="form-label">País/región:</label>
+                    <select className="form-select" name="country" value="Perú" disabled>
+                        <option value="Perú">Perú</option>
+                    </select>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Rol comercial:</label>
+                    <br/>
+                    <div className="form-check form-check-inline">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            id="comprador"
+                            name="userType"
+                            value="Comprador"
+                            checked={formData.userType === 'Comprador'}
+                            onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="comprador">Comprador</label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            id="vendedor"
+                            name="userType"
+                            value="Vendedor"
+                            checked={formData.userType === 'Vendedor'}
+                            onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="vendedor">Vendedor</label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input
+                            type="radio"
+                            className="form-check-input"
+                            id="ambos"
+                            name="userType"
+                            value="Ambos"
+                            checked={formData.userType === 'Ambos'}
+                            onChange={handleChange}
+                        />
+                        <label className="form-check-label" htmlFor="ambos">Ambos</label>
+                    </div>
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Correo electrónico:</label>
+                    <input
+                        type="email"
+                        className={`form-control ${errors.emailError ? 'is-invalid' : ''}`}
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.emailError && <div className="invalid-feedback">{errors.emailError}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Contraseña:</label>
+                    <input
+                        type="password"
+                        className={`form-control ${errors.passwordError ? 'is-invalid' : ''}`}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.passwordError && <div className="invalid-feedback">{errors.passwordError}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Nombre de empresa:</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.companyNameError ? 'is-invalid' : ''}`}
+                        name="companyName"
+                        value={formData.companyName}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.companyNameError && <div className="invalid-feedback">{errors.companyNameError}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Nombre completo:</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.fullNameError ? 'is-invalid' : ''}`}
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.fullNameError && <div className="invalid-feedback">{errors.fullNameError}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Teléfono:</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.phoneError ? 'is-invalid' : ''}`}
+                        name="phone"
+                        pattern="\d{9}"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        maxLength="9"
+                        placeholder="Número de 9 dígitos"
+                    />
+                    {errors.phoneError && <div className="invalid-feedback">{errors.phoneError}</div>}
+                </div>
+                <button type="submit" className="btn btn-primary">Aceptación y registro</button>
+            </form>
+        </div>
     );
 };
 

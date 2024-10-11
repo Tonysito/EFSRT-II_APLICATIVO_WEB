@@ -5,6 +5,7 @@ import Footer from './FOOTER/Footer';
 import Header from './HEADER/Header';
 import MainVender from './marcosH'
 import Registro from './Registro';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App () {
   return (

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const path = require('path');
 const cors = require('cors');
 
 const app = express();
@@ -9,9 +10,12 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Ruta al archivo usuarios.json dentro de la carpeta src
+const usuariosFilePath = path.join(__dirname, 'src', 'usuarios.json');
+
 // Leer usuarios desde usuarios.json
 app.get('/usuarios', (req, res) => {
-    fs.readFile('usuarios.json', 'utf8', (err, data) => {
+    fs.readFile(usuariosFilePath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer el archivo');
         }
@@ -24,7 +28,7 @@ app.post('/usuarios', (req, res) => {
     const newUser = req.body;
 
     // Leer usuarios existentes
-    fs.readFile('usuarios.json', 'utf8', (err, data) => {
+    fs.readFile(usuariosFilePath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send('Error al leer el archivo');
         }
@@ -34,7 +38,7 @@ app.post('/usuarios', (req, res) => {
         users.push(newUser);
 
         // Escribir en el archivo
-        fs.writeFile('usuarios.json', JSON.stringify(users, null, 2), (err) => {
+        fs.writeFile(usuariosFilePath, JSON.stringify(users, null, 2), (err) => {
             if (err) {
                 return res.status(500).send('Error al escribir en el archivo');
             }

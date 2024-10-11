@@ -9,6 +9,10 @@
   .cuenta-container:hover{
     color: red;
   }
+
+  .container.mt-5 {
+    margin-bottom: 3rem;
+  }
   
   .cuenta-icon {
     font-size: 30px;
@@ -20,8 +24,8 @@
   }
   
   .cuenta-container:hover .cuenta-icon{
-    color: red;
-    border: 2px solid red;
+    color: #d80000;
+    border: 2px solid #d80000;
   }
   
   .overlay {
