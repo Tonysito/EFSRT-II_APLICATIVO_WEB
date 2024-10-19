@@ -9,7 +9,6 @@
 
 body {
 	margin: 0 auto;
-	max-width: 1200px;
 	font-family: 'Lato';
 	color: #333;
 }
@@ -34,6 +33,15 @@ header {
 	justify-content: space-between;
 	padding: 30px 0 40px 0;
 }
+
+.tienda {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 40px 0;
+    max-width: 1200px;
+    margin: auto;
+}
+
 
 .container-icon {
 	position: relative;
@@ -135,17 +143,24 @@ header {
 
 /* Main */
 .container-items {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 80px;
 }
 
 .item {
 	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	transition: all .3s ease-in-out;
 }
 
 .item:hover {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
 }
 
 .item img {
@@ -162,6 +177,7 @@ header {
 
 .item:hover img {
 	transform: scale(1.2);
+	border-radius: 10px 10px 0 0;
 }
 
 .info-product {
@@ -178,12 +194,19 @@ header {
 }
 
 .info-product button {
-	border: none;
-	background: none;
-	background-color: #000;
-	color: #fff;
-	padding: 15px 10px;
-	cursor: pointer;
+    border: none;
+    background: none;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+	transition: all .3s ease-in-out;
+}
+
+.info-product button:hover {
+    background-color: #d80000;
+
 }
 
 .cart-empty {
@@ -203,8 +226,6 @@ header {
 	display: block;
 	width: 100%;
 	margin-top: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 	font-family: inherit;
 	cursor: pointer;
   font-size: 16px;
@@ -213,6 +234,23 @@ header {
 
 .btn-clear-all:hover{
   background-color: #333;
-  transform: scale(1.03);
-  border-radius: 0;
 }
+
+.btn-buy {
+	border: none;
+	background-color: #d80000;
+	color: #fff;
+	padding: 15px 0;
+	display: block;
+	width: 100%;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-family: inherit;
+	cursor: pointer;
+ 	font-size: 16px;
+ 	transition: all .3s ease;
+}
+
+.btn-buy:hover{
+	background-color: green;
+  }

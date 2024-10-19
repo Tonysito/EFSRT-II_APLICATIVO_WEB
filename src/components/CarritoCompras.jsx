@@ -1,5 +1,6 @@
 import { useState } from 'react'; 
 import jsPDF from 'jspdf';
+import Swal from 'sweetalert2';
 
 export const CarritoCompras = ({
 	allProducts,
@@ -31,46 +32,71 @@ export const CarritoCompras = ({
 	// Función para "comprar", almacenar la venta y crear PDF
 	const onComprar = () => {
 		const venta = {
-			fecha: new Date().toLocaleString(),
-			productos: allProducts,
-			total: total,
+		  fecha: new Date().toLocaleString(),
+		  productos: allProducts,
+		  total: total,
 		};
-
+	  
 		// Simular almacenamiento de la venta (agregar al estado)
 		setVentas([...ventas, venta]);
+	  
+		// Mostrar confirmación con Swal antes de generar el PDF
+		Swal.fire({
+		  title: '¿Estás seguro?',
+		  text: "Confirma para generar y guardar la boleta.",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Sí, generar Boleta',
+		  cancelButtonText: 'Cancelar',
+		}).then((result) => {
+		  if (result.isConfirmed) {
+			try {
+			  // Crear PDF
+			  const doc = new jsPDF();
+			  doc.setFontSize(12);
+			  doc.text('Detalles de Compra', 14, 20);
+			  doc.text(`Fecha: ${venta.fecha}`, 14, 30);
+			  doc.text('Productos:', 14, 40);
+	  
+			  let yPosition = 50; // Posición vertical inicial
+			  allProducts.forEach(product => {
+				doc.text(`${product.nameProduct} - Cantidad: ${product.quantity} - Precio: $${product.price}`, 14, yPosition);
+				yPosition += 10; // Espacio entre líneas
+			  });
+	  
+			  doc.text(`Total: $${total}`, 14, yPosition);
+	  
+			  // Guardar PDF
 
-		// Crear PDF
-		const doc = new jsPDF();
-		doc.setFontSize(12);
-		doc.text('Detalles de Compra', 14, 20);
-		doc.text(`Fecha: ${venta.fecha}`, 14, 30);
-		doc.text('Productos:', 14, 40);
-
-		let yPosition = 50; // Posición vertical inicial
-		allProducts.forEach(product => {
-			doc.text(`${product.nameProduct} - Cantidad: ${product.quantity} - Precio: $${product.price}`, 14, yPosition);
-			yPosition += 10; // Espacio entre líneas
+	  
+			  // Mostrar mensaje de éxito después de guardar el PDF
+			  Swal.fire("Compra realizada con éxito").then(() => {
+				doc.save('Boleta.pdf');
+				onCleanCart(); // Limpiar el carrito después de cerrar el mensaje de éxito
+			  });
+	  
+			} catch (error) {
+			  // Si ocurre algún error, mostrar un mensaje de error
+			  Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Hubo un problema al generar la boleta. Inténtalo de nuevo.',
+			  });
+			}
+		  } else {
+			// Si el usuario cancela, mostrar un mensaje de cancelación opcional
+			Swal.fire("La compra fue cancelada.");
+		  }
 		});
-
-		doc.text(`Total: $${total}`, 14, yPosition);
-
-		// Guardar PDF
-		doc.save('compra.pdf');
-
-		// Limpiar el carrito después de la compra
-		onCleanCart();
-
-		alert("Compra realizada con éxito y archivo PDF generado.");
-	};
-
+	  };
 	return (
-		<header>
+		<div className='tienda'>
 			<h1>Tienda</h1>
 
 			<div className='container-icon'>
 				<div
 					className='container-cart-icon'
-					onClick={() => setActive(!active)}
+					onMouseOver={() => setActive(true)}
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -93,6 +119,7 @@ export const CarritoCompras = ({
 
 				<div
 					className={`container-cart-products ${active ? '' : 'hidden-cart'}`}
+					onMouseLeave={() => setActive(false)}
 				>
 					{allProducts.length ? (
 						<>
@@ -134,13 +161,13 @@ export const CarritoCompras = ({
 								<span className='total-pagar'>${total}</span>
 							</div>
 
-							<button className='btn-clear-all' onClick={onCleanCart}>
+							<button className='btn-clear-all' onClick={() => { onCleanCart(); setActive(false); }}>
 								Vaciar Carrito
 							</button>
 
 							{/* Botón para comprar */}
-							<button className='btn-buy' onClick={onComprar}>
-								Comprar y Descargar PDF
+							<button className='btn-buy' onClick={() => { onComprar(); setActive(false); }}>
+								Comprar y Descargar Boleta
 							</button>
 						</>
 					) : (
@@ -148,6 +175,6 @@ export const CarritoCompras = ({
 					)}
 				</div>
 			</div>
-		</header>
+		</div>
 	);
 };

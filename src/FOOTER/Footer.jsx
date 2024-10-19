@@ -36,24 +36,24 @@ const Footer = () => {
         </div>
         <div>
           <h2>Cuenta</h2>
-          <a href="#">Crear cuenta emprendedor</a>
-          <a href="#">Crear cuenta </a>
+          <a href="/">Crear cuenta emprendedor</a>
+          <a href="/">Crear cuenta </a>
 
 
         </div>
         <div>
           <h2>Productos</h2>
-          <a href="#">Tendencia</a>
-          <a href="#">Ofertas</a>
-          <a href="#">Servicios</a>  {/*Ofrecer servicios*/}
+          <a href="/">Tendencia</a>
+          <a href="/">Ofertas</a>
+          <a href="/">Servicios</a>  {/*Ofrecer servicios*/}
    
         </div>
         <div>
           <h2>Atención al cliente</h2>
-          <a href="#">Tu cuenta</a>
-          <a href="#">Tus pedidos</a>
-          <a href="#">Devoluciones y reemplazos</a>
-          <a href="#">Ayuda</a>
+          <a href="/">Tu cuenta</a>
+          <a href="/">Tus pedidos</a>
+          <a href="/">Devoluciones y reemplazos</a>
+          <a href="/">Ayuda</a>
         </div>
         <div>
           <h2>REGÍSTRATE</h2>

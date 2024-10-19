@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Formulario.css';
-
-// Importa el archivo JSON de usuarios
 import usuarios from '../usuarios.json';
 
 const Formulario = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [usuarioNombre, setUsuarioNombre] = useState(null); // Estado para el nombre del usuario
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
+  // Recuperar el nombre del usuario del localStorage al cargar el componente
+  useEffect(() => {
+    const nombreGuardado = localStorage.getItem('usuarioNombre');
+    if (nombreGuardado) {
+      setUsuarioNombre(nombreGuardado);
+    }
+  }, []);
 
   const toggleRegisterForm = () => {
     setMostrarFormulario(prevState => !prevState);
@@ -41,12 +48,20 @@ const Formulario = () => {
       const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
 
       if (usuarioEncontrado) {
-        // Redirigir a la página de inicio si el usuario existe
-        window.location.href = '/vender'; // Cambia esto a la ruta de tu página de inicio
+        // Establecer el nombre del usuario en el estado y en localStorage
+        setUsuarioNombre(usuarioEncontrado.fullName); // Usa 'fullName' del JSON
+        localStorage.setItem('usuarioNombre', usuarioEncontrado.fullName); // Guardar en localStorage
+        window.location.href = '/'; // Cambia esto a la ruta de tu página de inicio
       } else {
         alert('Usuario o contraseña incorrectos');
       }
     }
+  };
+
+  const handleLogout = () => {
+    setUsuarioNombre(null); // Restablecer el nombre del usuario
+    localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
+    window.location.href = '/'; // Opcional: redirigir a la página de inicio
   };
 
   return (
@@ -54,8 +69,13 @@ const Formulario = () => {
       <div className="cuenta-icon" onClick={toggleRegisterForm}>
         <i className="fas fa-user" />
       </div>
-      <div>
-        <span onClick={toggleRegisterForm}>Iniciar Sesión</span>
+      <div className='user-sesion'>
+        <span onClick={toggleRegisterForm}>
+          {usuarioNombre ? usuarioNombre : 'Iniciar Sesión'}
+        </span>
+        {usuarioNombre && (
+          <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>
+        )}
       </div>
       {mostrarFormulario &&
         <div className="overlay" onClick={toggleRegisterForm}>

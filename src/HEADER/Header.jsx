@@ -18,7 +18,7 @@ const Header = () => {
           type="text"
           placeholder="Buscar productos..."
         />
-        
+                <Formulario/>
         <nav className="navegacion-header">
           <a href="#tendencia">Tendencia</a>
           <div className="menu-comprar">
@@ -43,7 +43,6 @@ const Header = () => {
           </div>
           <a href="#nosotros">Nosotros</a>
           <a href="#servicio-cliente">Servicio al Cliente</a>
-          <Formulario/>
         </nav>
       </div>
     </header>

@@ -7,5 +7,14 @@
     "fullName": "Espinoza Perez",
     "phone": "960537380",
     "userType": "Comprador"
+  },
+  {
+    "id": 2,
+    "email": "leonralph3d@gmail.com",
+    "password": "Leon#2024",
+    "companyName": "Exposervice",
+    "fullName": "Leonardo Pereyra",
+    "phone": "972778333",
+    "userType": "Vendedor"
   }
 ]
