@@ -1,3 +1,4 @@
+
 /*Vender*/
 
 @media (max-width : 1080px) {
@@ -6,9 +7,6 @@
     }
     .asid_banner_btn_reg{
         background-color: transparent;
-    }
-    .asid_banner_btn_reg button::after{
-        content: " y recibe un envio gratis";
     }
     .asid_banner_btn_reg button{
         font-size: 1.2em;

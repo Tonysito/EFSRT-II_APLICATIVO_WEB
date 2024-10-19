@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1,
+    "email": "anthonyaldairespinozaperez@gmail.com",
+    "password": "Anthony#2024",
+    "companyName": "EQUANS",
+    "fullName": "Espinoza Perez",
+    "phone": "960537380",
+    "userType": "Comprador"
+  }
+]

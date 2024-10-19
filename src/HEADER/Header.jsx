@@ -22,12 +22,17 @@ const Header = () => {
         <nav className="navegacion-header">
           <a href="#tendencia">Tendencia</a>
           <div className="menu-comprar">
-            <a href="#comprar">Comprar</a>
+
+            <Link to="/Carrito">Comprar</Link>
+
             <div className="submenu">
+
+
               <a href="#accesorio">Accesorio</a>
               <a href="#belleza">Belleza y Salud</a>
               <a href="#calzado">Calzado y Moda</a>
             </div>
+
           </div>
           <div className="menu-vender">
             <Link to="/vender">Vender</Link>

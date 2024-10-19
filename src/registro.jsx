@@ -149,18 +149,7 @@ const Registro = () => {
                         />
                         <label className="form-check-label" htmlFor="vendedor">Vendedor</label>
                     </div>
-                    <div className="form-check form-check-inline">
-                        <input
-                            type="radio"
-                            className="form-check-input"
-                            id="ambos"
-                            name="userType"
-                            value="Ambos"
-                            checked={formData.userType === 'Ambos'}
-                            onChange={handleChange}
-                        />
-                        <label className="form-check-label" htmlFor="ambos">Ambos</label>
-                    </div>
+                    
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Correo electrónico:</label>
