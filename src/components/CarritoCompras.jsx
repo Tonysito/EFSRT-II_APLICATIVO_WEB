@@ -58,16 +58,13 @@ export const CarritoCompras = ({
 			  doc.text(`Fecha: ${venta.fecha}`, 14, 30);
 			  doc.text('Productos:', 14, 40);
 	  
-			  let yPosition = 50; // Posición vertical inicial
+			  let yPosition = 50;
 			  allProducts.forEach(product => {
 				doc.text(`${product.nameProduct} - Cantidad: ${product.quantity} - Precio: $${product.price}`, 14, yPosition);
-				yPosition += 10; // Espacio entre líneas
+				yPosition += 10;
 			  });
 	  
 			  doc.text(`Total: $${total}`, 14, yPosition);
-	  
-			  // Guardar PDF
-
 	  
 			  // Mostrar mensaje de éxito después de guardar el PDF
 			  Swal.fire("Compra realizada con éxito").then(() => {
