@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Footer from './FOOTER/Footer';
 import Header from './HEADER/Header';
 import MainVender from './Vender.jsx';
-import Registro from './registro.jsx';
+import Registro from './registroTemp.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Carrito from './Carrito.jsx'; // Verifica que la ruta sea correcta
