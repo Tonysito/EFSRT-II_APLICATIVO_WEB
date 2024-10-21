@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Formulario.css';
-import usuarios from '../usuarios.json';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const Formulario = () => {
   const navigate = useNavigate();
@@ -13,6 +12,7 @@ const Formulario = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [usuarios, setUsuarios] = useState([]); // Estado para almacenar los usuarios
   const [usuarioNombre, setUsuarioNombre] = useState(null); // Estado para el nombre del usuario
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -23,6 +23,21 @@ const Formulario = () => {
     if (nombreGuardado) {
       setUsuarioNombre(nombreGuardado);
     }
+  }, []);
+
+  // Cargar usuarios desde el archivo usuarios.json
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const response = await fetch('https://comerciape.netlify.app/usuarios.json'); // Ruta a usuarios.json en public
+        const data = await response.json();
+        setUsuarios(data); // Almacenar los usuarios en el estado
+      } catch (error) {
+        console.error('Error al cargar usuarios:', error);
+      }
+    };
+
+    fetchUsuarios(); // Llamar a la función para cargar usuarios
   }, []);
 
   const toggleRegisterForm = () => {
@@ -51,14 +66,14 @@ const Formulario = () => {
     }
 
     if (valid) {
-      // Verificar las credenciales en usuarios.json
+      // Verificar las credenciales en el estado de usuarios
       const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
 
       if (usuarioEncontrado) {
         // Establecer el nombre del usuario en el estado y en localStorage
-        setUsuarioNombre(usuarioEncontrado.firstName);// Usa 'fullName' del JSON
+        setUsuarioNombre(usuarioEncontrado.firstName); // Usa 'firstName' del JSON
         localStorage.setItem('usuarioNombre', usuarioEncontrado.firstName); // Guardar en localStorage
-        localStorage.setItem('tipoUsuario', usuarioEncontrado.userType); // Asegúrate de que 'userType' esté definido en tu JSON
+        localStorage.setItem('tipoUsuario', usuarioEncontrado.userType); // Guardar el tipo de usuario en localStorage
 
         Swal.fire({
           title: '¡Felicidades!',
@@ -70,12 +85,12 @@ const Formulario = () => {
           customClass: {
               popup: 'animated bounce'
           }
-      }).then((result) => {
+        }).then((result) => {
           if (result.isConfirmed) {
-              // Redirigir a la página de inicio después de que se cierre el alert
-              window.location.href = '/';
+            // Redirigir a la página de inicio después de que se cierre el alert
+            window.location.href = '/';
           }
-      });
+        });
       } else {
         Swal.fire({
           title: '¡Error!',
@@ -89,25 +104,25 @@ const Formulario = () => {
           customClass: {
               popup: 'animated bounce'
           }
-      });
+        });
       }
     }
   };
 
   const handleLogout = () => {
-      Swal.fire({
-        title: '¿Estás seguro?',
-        text: '¿Deseas cerrar sesión?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Cerrar sesión',
-        cancelButtonText: 'Cancelar'
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Deseas cerrar sesión?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Cerrar sesión',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
-        if (result.isConfirmed) {
-            setUsuarioNombre(null); // Restablecer el nombre del usuario
-            localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
-            window.location.href = '/'; // Redirigir a la página de inicio
-        }
+      if (result.isConfirmed) {
+        setUsuarioNombre(null); // Restablecer el nombre del usuario
+        localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
+        window.location.href = '/'; // Redirigir a la página de inicio
+      }
     });
   };
 
@@ -118,7 +133,7 @@ const Formulario = () => {
       </div>
       <div className='user-sesion'>
         <span onClick={toggleRegisterForm}>
-          {usuarioNombre ? 'Hola, '+usuarioNombre : 'Iniciar Sesión'}
+          {usuarioNombre ? 'Hola, ' + usuarioNombre : 'Iniciar Sesión'}
         </span>
         {usuarioNombre && (
           <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>
