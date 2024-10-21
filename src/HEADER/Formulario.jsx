@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Formulario.css';
 import usuarios from '../usuarios.json';
 import Swal from 'sweetalert2'
 
 const Formulario = () => {
+  const navigate = useNavigate();
+  const pressClickReg = () => {
+      navigate('/Registro'); 
+  };
+
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -165,12 +171,15 @@ const Formulario = () => {
               <p className="signup">
                 No tienes una cuenta?
                 {' '}
-                <a
+                <button 
                   rel="noopener noreferrer"
-                  href="/Registro"
+                  onClick={() => {
+                    pressClickReg();
+                    toggleRegisterForm();
+                  }}
                 >
                   Crear Cuenta
-                </a>
+                </button>
               </p>
             </div>
           </div>

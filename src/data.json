@@ -54,5 +54,12 @@
     "price": 8,
     "quantity": 3,
     "img": "https://tecnopromospe.com/cdn/shop/files/smartwatch-serie-7-protechnopromostechnopromosceleste-108438-_6_1200x.jpg?v=1698908098"
+  },
+  {
+    "id": 9,
+    "nameProduct": "mesa",
+    "price": 13,
+    "quantity": 1,
+    "img": "https://www.pravi.pe/cdn/shop/products/Mesadetrabajo1copia2-100_dcf6ca06-a91c-476d-a6c5-b5d298cebc64_2048x.jpg?v=1649112379"
   }
 ]
