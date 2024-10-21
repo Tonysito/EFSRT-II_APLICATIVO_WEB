@@ -1,8 +1,24 @@
-import React from 'react';
-import { data } from '../data';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 const ProductList = ({ usuarioNombre, allProducts, setAllProducts, countProducts, setCountProducts, total, setTotal }) => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        // Cargar los productos desde data.json
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/productos'); // Asegúrate de que la ruta sea correcta
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error al cargar los datos:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const onAddProduct = product => {
         // Verificar si el usuario ha iniciado sesión
         if (!usuarioNombre || usuarioNombre === 'Iniciar Sesión') {
@@ -43,7 +59,7 @@ const ProductList = ({ usuarioNombre, allProducts, setAllProducts, countProducts
 
     return (
         <div className='container-items'>
-            {data.map(product => (
+            {products.map(product => (
                 <div className='item' key={product.id}>
                     <figure>
                         <img src={product.img} alt={product.nameProduct} />

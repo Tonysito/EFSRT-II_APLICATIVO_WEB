@@ -1,19 +1,11 @@
 [
   {
     "id": 1,
-    "email": "anthonyaldairespinozaperez@gmail.com",
-    "password": "Anthony#2024",
-    "companyName": "EQUANS",
-    "fullName": "Espinoza Perez",
-    "phone": "960537380",
-    "userType": "Comprador"
-  },
-  {
-    "id": 2,
     "email": "leonralph3d@gmail.com",
-    "password": "Leon#2024",
+    "password": "Leon#1234",
     "companyName": "Exposervice",
-    "fullName": "Leonardo Pereyra",
+    "firstName": "Leonardo",
+    "lastName": "Pereyra",
     "phone": "972778333",
     "userType": "Vendedor"
   }

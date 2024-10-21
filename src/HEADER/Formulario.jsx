@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Formulario.css';
 import usuarios from '../usuarios.json';
+import Swal from 'sweetalert2'
 
 const Formulario = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -49,19 +50,59 @@ const Formulario = () => {
 
       if (usuarioEncontrado) {
         // Establecer el nombre del usuario en el estado y en localStorage
-        setUsuarioNombre(usuarioEncontrado.fullName); // Usa 'fullName' del JSON
-        localStorage.setItem('usuarioNombre', usuarioEncontrado.fullName); // Guardar en localStorage
-        window.location.href = '/'; // Cambia esto a la ruta de tu página de inicio
+        setUsuarioNombre(usuarioEncontrado.firstName);// Usa 'fullName' del JSON
+        localStorage.setItem('usuarioNombre', usuarioEncontrado.firstName); // Guardar en localStorage
+        localStorage.setItem('tipoUsuario', usuarioEncontrado.userType); // Asegúrate de que 'userType' esté definido en tu JSON
+
+        Swal.fire({
+          title: '¡Felicidades!',
+          text: 'Has iniciado sesión con éxito.',
+          icon: 'success',
+          confirmButtonText: 'Cerrar',
+          confirmButtonColor: '#4CAF50',
+          iconColor: '#4CAF50',
+          customClass: {
+              popup: 'animated bounce'
+          }
+      }).then((result) => {
+          if (result.isConfirmed) {
+              // Redirigir a la página de inicio después de que se cierre el alert
+              window.location.href = '/';
+          }
+      });
       } else {
-        alert('Usuario o contraseña incorrectos');
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Usuario o contraseña incorrectos',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+          background: '#fff',
+          color: '#333',
+          confirmButtonColor: '#ff4d4f',
+          iconColor: '#ff4d4f',
+          customClass: {
+              popup: 'animated bounce'
+          }
+      });
       }
     }
   };
 
   const handleLogout = () => {
-    setUsuarioNombre(null); // Restablecer el nombre del usuario
-    localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
-    window.location.href = '/'; // Opcional: redirigir a la página de inicio
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¿Deseas cerrar sesión?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Cerrar sesión',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            setUsuarioNombre(null); // Restablecer el nombre del usuario
+            localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
+            window.location.href = '/'; // Redirigir a la página de inicio
+        }
+    });
   };
 
   return (
@@ -71,7 +112,7 @@ const Formulario = () => {
       </div>
       <div className='user-sesion'>
         <span onClick={toggleRegisterForm}>
-          {usuarioNombre ? usuarioNombre : 'Iniciar Sesión'}
+          {usuarioNombre ? 'Hola, '+usuarioNombre : 'Iniciar Sesión'}
         </span>
         {usuarioNombre && (
           <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>

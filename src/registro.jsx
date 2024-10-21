@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Registro = () => {
@@ -6,7 +7,8 @@ const Registro = () => {
         email: '',
         password: '',
         companyName: '',
-        fullName: '',
+        firstName: '',
+        lastName: '',
         phone: '',
         userType: '' // Nuevo campo para tipo de usuario
     });
@@ -15,7 +17,8 @@ const Registro = () => {
         emailError: '',
         passwordError: '',
         companyNameError: '',
-        fullNameError: '',
+        firstNameError: '',
+        lastNameError: '',
         phoneError: ''
     });
 
@@ -59,12 +62,21 @@ const Registro = () => {
         }
 
         // Validar nombre completo
-        const fullNameRegex = /^[a-zA-Z\s]{3,50}$/; // Solo letras y espacios, 3 a 50 caracteres
-        if (!fullNameRegex.test(formData.fullName)) {
-            newErrors.fullNameError = 'El nombre completo debe tener entre 3 y 50 caracteres y solo puede incluir letras y espacios.';
+        const firstNameRegex = /^[a-zA-Z\s]{3,50}$/; // Solo letras y espacios, 3 a 50 caracteres
+        if (!firstNameRegex.test(formData.firstName)) {
+            newErrors.firstNameError = 'El nombre debe tener entre 3 y 50 caracteres y solo puede incluir letras y espacios.';
             valid = false;
         } else {
-            newErrors.fullNameError = '';
+            newErrors.firstNameError = '';
+        }
+
+                // Validar apellido
+        const lastNameRegex = /^[a-zA-Z\s]{3,50}$/; // Solo letras y espacios, 3 a 50 caracteres
+        if (!lastNameRegex.test(formData.lastName)) {
+            newErrors.lastNameError = 'El apellido debe tener entre 3 y 50 caracteres y solo puede incluir letras y espacios.';
+            valid = false;
+        } else {
+            newErrors.lastNameError = '';
         }
 
         // Validar teléfono
@@ -97,18 +109,47 @@ const Registro = () => {
                 },
                 body: JSON.stringify(usuarioData),
             });
-
-            alert('Registro exitoso');
             setFormData({
                 email: '',
                 password: '',
                 companyName: '',
-                fullName: '',
+                firstName: '',
+                lastName: '',
                 phone: '',
                 userType: '' // Reiniciar el tipo de usuario
             });
+            Swal.fire({
+                title: 'Registro exitoso',
+                text: 'Bienvenido/a ' + formData.firstName + ', ya puedes iniciar sesión',
+                icon: 'success',
+                confirmButtonText: 'Cerrar',
+                background: '#fff',
+                color: '#333',
+                confirmButtonColor: '#4CAF50',
+                iconColor: '#4CAF50',
+                customClass: {
+                    popup: 'animated bounce'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir a la página de inicio después de que se cierre el alert
+                    window.location.href = '/';
+                }
+            });
         } else {
-            alert('Por favor, corrige los errores en el formulario.');
+            Swal.fire({
+                title: '¡Error!',
+                text: 'Por favor, corrige los errores en el formulario.',
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                background: '#fff',
+                color: '#333',
+                confirmButtonColor: '#ff4d4f',
+                iconColor: '#ff4d4f',
+                customClass: {
+                    popup: 'animated bounce'
+                }
+            });
         }
     };
 
@@ -188,16 +229,28 @@ const Registro = () => {
                     {errors.companyNameError && <div className="invalid-feedback">{errors.companyNameError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Nombre completo:</label>
+                    <label className="form-label">Nombre:</label>
                     <input
                         type="text"
-                        className={`form-control ${errors.fullNameError ? 'is-invalid' : ''}`}
-                        name="fullName"
-                        value={formData.fullName}
+                        className={`form-control ${errors.firstNameError ? 'is-invalid' : ''}`}
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleChange}
                         required
                     />
-                    {errors.fullNameError && <div className="invalid-feedback">{errors.fullNameError}</div>}
+                    {errors.firstNameError && <div className="invalid-feedback">{errors.firstNameError}</div>}
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">Apellido:</label>
+                    <input
+                        type="text"
+                        className={`form-control ${errors.lastNameError ? 'is-invalid' : ''}`}
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.lastNameError && <div className="invalid-feedback">{errors.lastNameError}</div>}
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Teléfono:</label>
