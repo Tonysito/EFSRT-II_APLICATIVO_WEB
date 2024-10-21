@@ -12,8 +12,8 @@ const Formulario = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [usuarios, setUsuarios] = useState([]); // Estado para almacenar los usuarios
-  const [usuarioNombre, setUsuarioNombre] = useState(null); // Estado para el nombre del usuario
+  const [usuarioNombre, setUsuarioNombre] = useState(null);
+  const [usuarios, setUsuarios] = useState([]); // Estado para almacenar usuarios
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
@@ -23,21 +23,28 @@ const Formulario = () => {
     if (nombreGuardado) {
       setUsuarioNombre(nombreGuardado);
     }
-  }, []);
-
-  // Cargar usuarios desde el archivo usuarios.json
-  useEffect(() => {
+    
+    // Cargar usuarios desde usuarios.json
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch('https://comerciape.netlify.app/usuarios.json'); // Ruta a usuarios.json en public
+        const response = await fetch('/usuarios.json');
+        if (!response.ok) {
+          throw new Error('Error al cargar usuarios');
+        }
         const data = await response.json();
-        setUsuarios(data); // Almacenar los usuarios en el estado
+        setUsuarios(data); // Almacena los usuarios en el estado
       } catch (error) {
-        console.error('Error al cargar usuarios:', error);
+        console.error(error);
+        Swal.fire({
+          title: '¡Error!',
+          text: 'No se pudieron cargar los usuarios.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar',
+        });
       }
     };
 
-    fetchUsuarios(); // Llamar a la función para cargar usuarios
+    fetchUsuarios();
   }, []);
 
   const toggleRegisterForm = () => {
@@ -66,14 +73,13 @@ const Formulario = () => {
     }
 
     if (valid) {
-      // Verificar las credenciales en el estado de usuarios
+      // Verificar las credenciales en usuarios
       const usuarioEncontrado = usuarios.find(usuario => usuario.email === email && usuario.password === password);
 
       if (usuarioEncontrado) {
-        // Establecer el nombre del usuario en el estado y en localStorage
-        setUsuarioNombre(usuarioEncontrado.firstName); // Usa 'firstName' del JSON
-        localStorage.setItem('usuarioNombre', usuarioEncontrado.firstName); // Guardar en localStorage
-        localStorage.setItem('tipoUsuario', usuarioEncontrado.userType); // Guardar el tipo de usuario en localStorage
+        setUsuarioNombre(usuarioEncontrado.firstName);
+        localStorage.setItem('usuarioNombre', usuarioEncontrado.firstName);
+        localStorage.setItem('tipoUsuario', usuarioEncontrado.userType);
 
         Swal.fire({
           title: '¡Felicidades!',
@@ -87,7 +93,6 @@ const Formulario = () => {
           }
         }).then((result) => {
           if (result.isConfirmed) {
-            // Redirigir a la página de inicio después de que se cierre el alert
             window.location.href = '/';
           }
         });
@@ -119,9 +124,9 @@ const Formulario = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        setUsuarioNombre(null); // Restablecer el nombre del usuario
-        localStorage.removeItem('usuarioNombre'); // Eliminar del localStorage
-        window.location.href = '/'; // Redirigir a la página de inicio
+        setUsuarioNombre(null);
+        localStorage.removeItem('usuarioNombre');
+        window.location.href = '/';
       }
     });
   };

@@ -11,7 +11,7 @@ const AgregarProducto = ({ setAllProducts }) => {
   useEffect(() => {
     const fetchLastId = async () => {
       try {
-        const response = await fetch('https://comerciape.netlify.app/data.json');
+        const response = await fetch('http://localhost:5000/productos');
         const data = await response.json();
         const lastProduct = data[data.length - 1];
         setNuevoId(lastProduct ? lastProduct.id + 1 : 1);
@@ -34,7 +34,7 @@ const AgregarProducto = ({ setAllProducts }) => {
       img: img,
     };
 
-    const response = await fetch('https://comerciape.netlify.app/data.json', {
+    const response = await fetch('http://localhost:5000/productos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

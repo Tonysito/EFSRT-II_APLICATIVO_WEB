@@ -102,7 +102,7 @@ const Registro = () => {
             };
 
             // Guardar datos en el archivo usuarios.json
-            await fetch('https://comerciape.netlify.app/usuarios.json', {
+            await fetch('http://localhost:5000/usuarios', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
