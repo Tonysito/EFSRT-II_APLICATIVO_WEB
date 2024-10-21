@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Ruta al archivo usuarios.json dentro de la carpeta src
-const usuariosFilePath = path.join(__dirname, 'src', 'usuarios.json');
+const usuariosFilePath = path.join(__dirname, 'public', 'usuarios.json');
 
 // Leer usuarios desde usuarios.json
 app.get('/usuarios', (req, res) => {
@@ -48,7 +48,7 @@ app.post('/usuarios', (req, res) => {
 });
 
 // Rutas para productos
-const productosFilePath = path.join(__dirname, 'src', 'data.json');
+const productosFilePath = path.join(__dirname, 'public', 'data.json');
 
 // Leer productos desde data.json
 app.get('/productos', (req, res) => {
