@@ -15,21 +15,7 @@ portfinder.getPort((err, port) => {
   });
 
   reactProcess.on('exit', (code) => {
-    if (code === 0) {
-      console.log(`Servidor de React corriendo correctamente en el puerto ${port}`);
-    } else {
-      console.log(`Error al ejecutar el servidor de React, código de salida: ${code}`);
-    }
-  });
-
-  // Controlar que solo se busque puerto la primera vez
-  let serverStarted = false;
-
-  reactProcess.stdout.on('data', (data) => {
-    if (!serverStarted && data.toString().includes('compiled successfully')) {
-      serverStarted = true;
-      console.log(`El servidor de React se ejecuta correctamente en http://localhost:${port}`);
-    }
+    console.log(`Servidor de React cerrado con código: ${code}`);
   });
 });
 
