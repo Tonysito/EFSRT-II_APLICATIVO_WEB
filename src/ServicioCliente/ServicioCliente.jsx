@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './ServicioCliente.css'; // Importamos el CSS correspondiente
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone   } from 'react-icons/fa';
+import { IoChatbubbleEllipses } from "react-icons/io5";
+import { IoMdMail } from "react-icons/io";
 
 const ServicioCliente = () => {
   const [nombre, setNombre] = useState('');
@@ -51,17 +53,17 @@ const ServicioCliente = () => {
 
         <div className="contact-options">
           <div className="contact-method">
-            <img src="/images/phone-icon.png" alt="Teléfono" />
+          <FaPhone size="2rem"  /> 
             <h3>Teléfono</h3>
             <p>Llámanos al <strong>(01) 123-4567</strong></p>
           </div>
           <div className="contact-method">
-            <img src="/images/email-icon.png" alt="Correo electrónico" />
+          <IoMdMail size="2rem"/>
             <h3>Correo Electrónico</h3>
             <p>Escríbenos a <strong>soporte@comerciape.com</strong></p>
           </div>
           <div className="contact-method">
-            <img src="/images/chat-icon.png" alt="Chat en Vivo" />
+         <IoChatbubbleEllipses size="2rem"/>
             <h3>Chat en Vivo</h3>
             <p>Habla con un representante ahora</p>
           </div>
