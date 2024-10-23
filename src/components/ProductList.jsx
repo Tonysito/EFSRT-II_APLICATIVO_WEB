@@ -8,7 +8,7 @@ const ProductList = ({ usuarioNombre, allProducts, setAllProducts, countProducts
         // Cargar los productos desde data.json
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/productos'); // Asegúrate de que la ruta sea correcta
+                const response = await fetch('http://localhost:5000/productos'||'https://comerciape.netlify.app/data.json'); // Asegúrate de que la ruta sea correcta
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {
