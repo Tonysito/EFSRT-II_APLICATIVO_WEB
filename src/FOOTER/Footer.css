@@ -1,6 +1,4 @@
-/* Footer.css */
-
-.pie {
+.footer {
     background-color: #f0f4f8; /* Color de fondo suave */
     padding: 40px 20px; /* Mayor espaciado */
     text-align: center; /* Centrar el texto */
@@ -8,58 +6,59 @@
     border-top: 2px solid #007bff; /* Borde superior para separación */
 }
 
-.header {
+.footer-header {
     display: flex; /* Usar flexbox */
     justify-content: space-between; /* Espacio entre logo y redes */
     align-items: center; /* Centrar verticalmente */
     margin-bottom: 20px; /* Espacio inferior */
 }
 
-.logo {
+.footer-logo {
     display: flex; /* Usar flexbox para alinear logo e texto */
     align-items: center; /* Centrar verticalmente */
 }
 
-.logo img {
+.footer-logo img {
     width: 60px; /* Ajuste del ancho de la imagen */
     margin-right: 15px; /* Espaciado a la derecha del logo */
 }
 
-.redes {
+.footer-socials {
     display: flex; /* Usar flexbox para alinear iconos */
     gap: 20px; /* Espacio entre los iconos */
 }
 
-.redes a {
+.footer-socials a {
     color: #333; /* Color de los iconos */
     font-size: 24px; /* Aumentar tamaño de los iconos */
     transition: color 0.3s; /* Transición suave */
 }
 
-.redes a:hover {
+.footer-socials a:hover {
     color: #007bff; /* Color al pasar el ratón */
 }
 
-.section {
+.footer-sections {
     display: flex; /* Usar flexbox para las secciones */
     justify-content: space-around; /* Espacio alrededor */
     flex-wrap: wrap; /* Permitir que las secciones se envuelvan en pantallas pequeñas */
     margin: 20px 0; /* Espaciado arriba y abajo */
 }
 
-.section div {
+.footer-sections div {
     flex: 1; /* Cada sección ocupará el mismo espacio */
     margin: 10px; /* Espaciado lateral */
     min-width: 150px; /* Ancho mínimo para responsividad */
+    text-align: left; /* Alinear texto a la izquierda */
 }
 
-h2 {
+.footer-sections h2 {
     font-size: 22px; /* Aumentar tamaño de fuente para los títulos */
     margin-bottom: 15px; /* Espaciado debajo de los títulos */
     color: #007bff; /* Color de los títulos */
 }
 
-a {
+.footer-sections a {
     display: block; /* Cada enlace en una nueva línea */
     color: #555; /* Color de los enlaces */
     text-decoration: none; /* Sin subrayado */
@@ -67,21 +66,37 @@ a {
     transition: color 0.2s; /* Transición suave */
 }
 
-a:hover {
+.footer-sections a:hover {
     color: #007bff; /* Color al pasar el ratón */
+    font-weight: bold; /* Negrita al pasar el ratón */
 }
 
-.derechos {
+.footer-rights {
     margin-top: 20px; /* Espaciado superior */
     font-size: 14px; /* Tamaño de fuente para derechos */
     color: #777; /* Color más suave */
 }
 
-form {
-    margin-top: 15px; /* Espacio adicional arriba del formulario */
+.footer-rights a {
+    color: #007bff; /* Color de los enlaces en derechos */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.2s; /* Transición suave */
 }
 
-input[type="email"] {
+.footer-rights a:hover {
+    text-decoration: underline; /* Subrayado al pasar el ratón */
+}
+
+.footer-register {
+    margin-top: 20px; /* Espacio adicional arriba del formulario */
+}
+
+.footer-register form {
+    display: flex; /* Usar flexbox para el formulario */
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.footer-register input[type="email"] {
     padding: 10px; /* Espaciado interno */
     width: 250px; /* Ancho del input */
     border: 1px solid #ccc; /* Borde del input */
@@ -90,12 +105,12 @@ input[type="email"] {
     transition: border 0.3s; /* Transición suave para el borde */
 }
 
-input[type="email"]:focus {
+.footer-register input[type="email"]:focus {
     border-color: #007bff; /* Cambiar color de borde al enfocar */
     outline: none; /* Sin contorno al enfocar */
 }
 
-button {
+.footer-register button {
     padding: 10px 15px; /* Espaciado interno del botón */
     background-color: #007bff; /* Color de fondo del botón */
     color: white; /* Color del texto */
@@ -103,10 +118,13 @@ button {
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
     transition: background-color 0.3s; /* Transición suave */
-    margin-left: 10px; /* Margen a la izquierda para separar del input */
-    margin-top: 10px; /* Margen superior para separar del input */
 }
 
-button:hover {
+.footer-register button:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+}
+
+.loguito {
+    width: 150px; /* Asegurar que el logo sea responsivo */
+    height: 20px; /* Mantener la relación de aspecto */
 }

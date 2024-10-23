@@ -101,9 +101,9 @@ const ServicioCliente = () => {
       <section className="support-section">
         <h2>Otros Recursos</h2>
         <ul>
-          <li><a href="#">Políticas de Devolución</a></li>
-          <li><a href="#">Términos y Condiciones</a></li>
-          <li><a href="#">Privacidad y Seguridad</a></li>
+          <li><a href="/">Políticas de Devolución</a></li>
+          <li><a href="/">Términos y Condiciones</a></li>
+          <li><a href="/">Privacidad y Seguridad</a></li>
         </ul>
       </section>
 
