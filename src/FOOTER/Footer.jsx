@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css'; 
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
-import { PiX } from 'react-icons/pi';
+//import { PiX } from 'react-icons/pi';
 
 const Footer = () => {
   return (
