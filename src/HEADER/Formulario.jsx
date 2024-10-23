@@ -27,7 +27,7 @@ const Formulario = () => {
     // Cargar usuarios desde usuarios.json
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch('/usuarios.json');
+        const response = await fetch('https://comerciape.netlify.app/usuarios.json');
         if (!response.ok) {
           throw new Error('Error al cargar usuarios');
         }
