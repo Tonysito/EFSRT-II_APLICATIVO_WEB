@@ -116,7 +116,7 @@
     border-radius: 20px;
     width: 95%;
     margin: 20px auto;
-    padding: 10px;
+    padding: 30px;
 }   
     .div_puntos div{    
         display: flex;
@@ -127,9 +127,26 @@
         width: 3em;
         padding: 10px;
     }
-    .asid_puntos{
+    .asid_puntos button{
+        box-shadow: 2px 2px 5px gray;
         padding: 10px;
+        border: none;
+        background-color: #0275d8;
+        color: white;
+        border-radius: 10px;
+        transition: all .3s ease-in-out;
     }
+
+    .asid_puntos button:hover{
+        background-color: #228deb;
+        transform: scale(1.05);
+    }
+
+    .asid_puntos{
+        all: unset;
+        padding: 5px;
+    }
+
     .asid_puntos a:hover{
         color: #ff4d4f;
     }
@@ -195,6 +212,7 @@
 .sec_preg_frec{
     width: 85%;
     margin: 20px auto;
+    margin-bottom: 100px;
 }
 .sec_preg_frec h3{
     text-align: center;
@@ -204,11 +222,25 @@
     justify-content: space-between;
     align-items: center;
 }
-.asid_preg_frec button{
+.asid_preg_frec .button-simbolos{
+    border: none;
     margin: 0px;
     width: 40px;
     height: 40px;
+    padding: 0px;
+    background-color: #0275d8;
+    border-radius: 5px;
+    color: #fff;
+    vertical-align: middle;
+    font-size: 40px;
+    display: flex;
 }
+
+.asid_preg_frec button img{
+    font-size: 40px;
+    display: flex;
+}
+
 .asid_preg_frec h4{
     font-size: 22px;
     margin: 10px 0px;

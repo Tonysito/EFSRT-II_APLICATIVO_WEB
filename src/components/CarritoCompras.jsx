@@ -93,7 +93,7 @@ export const CarritoCompras = ({
 			<div className='container-icon'>
 				<div
 					className='container-cart-icon'
-					onMouseOver={() => setActive(true)}
+					onClick={() => setActive(true)}
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'

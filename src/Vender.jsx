@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import infVendEmp from './infVendEmp.json';
 import '../src/Vender.css';
 import '../src/mediaqueries.css';
+import { FaMinusSquare, FaPlusSquare } from "react-icons/fa";
 
 const MainVender = () => {
 
@@ -36,7 +37,7 @@ const MainVender = () => {
                     <h3>EMPRENDEDORES EXITOSOS</h3>
                     <aside className="asid_banner_btn_reg">
                     {usuarioNombre ? (
-                            <button disabled>Hola, {usuarioNombre}!</button> // Muestra el nombre del usuario
+                            <button disabled>Hola, {usuarioNombre}</button> // Muestra el nombre del usuario
                         ) : (
                             <button onClick={pressClickReg}>Regístrate</button> // Botón de registro si no hay usuario
                         )}
@@ -47,7 +48,7 @@ const MainVender = () => {
             {/* section 1 --- Fin */}
             {/* section 2 --- Inicio */}
             <aside className="asid_estadisticas">
-                <p>Más del 70 % de los emprendedores de ComerciaPe consiguen su primera</p>
+                <p>Más del 70 % de los emprendedores de Comercia.pe consiguen su primera</p>
                 <p>venta en menos de 60 días.</p>
             </aside>
             {/* section 2 --- Fin */}
@@ -58,7 +59,7 @@ const MainVender = () => {
                 </div>
                 <div className="div_empieza_ben">
                     <h3>Empieza con beneficios por ser de los primeros</h3>
-                    <p>¿Todo listo para vender en ComerciaPe? Como vendedor nuevo, puedes obtener más beneficios.</p>
+                    <p>¿Todo listo para vender en Comercia.pe? Como vendedor nuevo, puedes obtener más beneficios.</p>
                     <div>
                         {infVendEmp.d_ben.map((beneficio, i) => (
                             <p key={i}><strong>{beneficio.ben_resal}</strong> {beneficio.descripcion}</p>
@@ -70,8 +71,8 @@ const MainVender = () => {
             {/* section 4 --- Inicio */}
             <section className="sec_puntos_resenias">
                 <div className="div_puntos">
-                    <h3>¿Por qué crear una cuenta de vendedor de ComerciaPe?</h3>
-                    <p>Hay un sinfín de motivos para vender en ComerciaPe. Estos son solo algunos.</p>
+                    <h3>¿Por qué crear una cuenta de vendedor de Comercia.pe?</h3>
+                    <p>Hay un sinfín de motivos para vender en Comercia.pe. Estos son solo algunos.</p>
                     {infVendEmp.d_punt.map((puntos, i) => (
                         <div key={i}>
                             <img src={puntos.icon} alt={puntos.titulo} />
@@ -122,8 +123,8 @@ const MainVender = () => {
                             <aside className="asid_preg_frec">
                                 <div>
                                     <h4>{frecuente.pregunta}</h4>
-                                    <button onClick={() => pressClickMasInfo(f)}>
-                                        {indexActive === f ? "➖" : "➕"}
+                                    <button className="button-simbolos" onClick={() => pressClickMasInfo(f)}>
+                                        {indexActive === f ? <FaMinusSquare/> : <FaPlusSquare/>}
                                     </button>
                                 </div>
                                 <div className={`div_respuesta ${indexActive === f ? 'active' : ''}`}>

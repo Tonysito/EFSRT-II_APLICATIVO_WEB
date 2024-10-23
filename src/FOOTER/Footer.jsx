@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footer.css'; 
-import { useNavigate } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Swal from 'sweetalert2'; // Importar SweetAlert
 
@@ -18,11 +17,6 @@ const Footer = () => {
         window.location.href = '/'; // Redirigir al inicio
       }
     });
-  };
-
-  const navigate = useNavigate();
-  const pressClickReg = () => {
-      navigate('/Registro'); 
   };
 
   return (
@@ -52,12 +46,12 @@ const Footer = () => {
           <h2>Nosotros</h2>
           <a href="#trabaja">Trabaja con nosotros</a>
           <a href="#blog">Blog</a>
-          <a href="#acerca">Acerca de ComerciaPe</a>
+          <a href="#acerca">Acerca de Comercia.pe</a>
         </div>
         <div>
           <h2>Cuenta</h2>
-          <a href="/" onClick={(e) => { e.preventDefault(); pressClickReg(); }}>Crear cuenta emprendedor</a>
-          <a href="/" onClick={(e) => { e.preventDefault(); pressClickReg(); }}>Crear cuenta</a>
+          <a href="#emprendedor">Crear cuenta emprendedor</a>
+          <a href="#comprador">Crear cuenta</a>
         </div>
         <div>
           <h2>Productos</h2>
@@ -81,7 +75,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-rights">
-        <p>Copyright &copy; 2024 ComerciaPe. Todos los derechos reservados.</p>
+        <p>Copyright &copy; 2024 Comercia.pe. Todos los derechos reservados.</p>
         <p>
           <a href="#privacidad">Política de privacidad</a> | 
           <a href="#terminos">Términos y condiciones</a>

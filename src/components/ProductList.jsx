@@ -65,11 +65,14 @@ const ProductList = ({ usuarioNombre, allProducts, setAllProducts, countProducts
                         <img src={product.img} alt={product.nameProduct} />
                     </figure>
                     <div className='info-product'>
-                        <h2>{product.nameProduct}</h2>
-                        <p className='price'>${product.price}</p>
-                        <button onClick={() => onAddProduct(product)}>
+                    <h3>{product.nameProduct}</h3>
+                    <p className='price'>S/. {product.price}</p>
+                    <button onClick={() => onAddProduct(product)}>
                             Añadir al carrito
                         </button>
+
+                        
+                        
                     </div>
                 </div>
             ))}
