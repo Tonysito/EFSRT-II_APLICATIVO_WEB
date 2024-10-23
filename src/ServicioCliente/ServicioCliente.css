@@ -1,0 +1,231 @@
+/* Estilos generales */
+.servicio-cliente-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  /* Header Section */
+  .header-section {
+    text-align: center;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 60px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-section h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .header-section p {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    margin-top: 40px;
+  }
+  
+  .faq-section h2 {
+    font-size: 2.4rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .faq-item {
+    background-color: #f9f9f9;
+    border-left: 4px solid #27ae60;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item h3 {
+    font-size: 1.6rem;
+    color: #27ae60;
+    margin-bottom: 10px;
+  }
+  
+  .faq-item p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    background-color: #ecf0f1;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .contact-section h2 {
+    font-size: 2.4rem;
+    color: #2980b9;
+    margin-bottom: 20px;
+  }
+  
+  .contact-section p {
+    font-size: 1.15rem;
+    color: #34495e;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+  
+  .contact-options {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .contact-method {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    max-width: 300px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .contact-method:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-method img {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-method h3 {
+    font-size: 1.6rem;
+    color: #27ae60;
+    margin-bottom: 10px;
+  }
+  
+  .contact-method p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Form Section */
+  .form-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f0f3f4;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-section input,
+  .form-section textarea {
+    width: 80%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+    font-size: 1rem;
+  }
+  
+  .form-section button {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-section button:hover {
+    background-color: #219150;
+  }
+  
+  /* Mensaje de éxito */
+  .success-message {
+    margin-top: 20px;
+    color: #27ae60;
+    font-size: 1.2rem;
+  }
+  
+  /* Support Section */
+  .support-section {
+    margin-top: 40px;
+  }
+  
+  .support-section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .support-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .support-section li {
+    margin-bottom: 10px;
+  }
+  
+  .support-section a {
+    text-decoration: none;
+    color: #2980b9;
+  }
+  
+  .support-section a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Botón flotante de WhatsApp */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .whatsapp-button img {
+    width: 30px;
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #128C7E;
+  }
+  

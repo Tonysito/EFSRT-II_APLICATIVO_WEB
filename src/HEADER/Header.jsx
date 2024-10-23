@@ -44,7 +44,7 @@ const Header = () => {
           </div>
           <Link to="/Nosotros">Nosotros</Link>
   
-          <Link to="/ServicoCliente">Servicio al cliente</Link>
+          <Link to="/ServicioCliente">Servicio al cliente</Link>
         </nav>
       </div>
     </header>

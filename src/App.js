@@ -8,6 +8,7 @@ import Registro from './registrar.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nosotros from './Nosotros/Nosotros.jsx';
 import Carrito from './Carrito.jsx'; // Verifica que la ruta sea correcta
+import ServicioCliente from './ServicioCliente/ServicioCliente.jsx';
 
 function App () {
   return (
@@ -21,6 +22,7 @@ function App () {
           <Route path="/vender" element={<MainVender />} />
           <Route path="/Nosotros" element={<Nosotros/>} />
           <Route path="/Registro" element={<Registro />} />
+          <Route path="/ServicioCliente" element={<ServicioCliente />} />
         </Routes>
 
         <Footer />
