@@ -28,7 +28,7 @@ const ServicioCliente = () => {
     <div className="servicio-cliente-container">
       <div className="header-section">
         <h1>Servicio al Cliente</h1>
-        <p>Estamos aquí para ayudarte con todo lo que necesites en ComerciaPe</p>
+        <p>Estamos aquí para ayudarte con todo lo que necesites en Comercia.pe</p>
       </div>
 
       <section className="faq-section">

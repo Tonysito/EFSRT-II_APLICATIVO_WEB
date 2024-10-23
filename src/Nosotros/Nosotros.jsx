@@ -13,7 +13,7 @@ const Nosotros = () => {
         <div className="text-container">
           <h2>Sobre Nosotros</h2>
           <p>
-            En <strong>ComerciaPe</strong>, estamos comprometidos con el desarrollo del comercio digital en Perú. Nos enfocamos en brindar una plataforma segura y confiable para que las personas puedan comprar y vender productos con facilidad. Nuestro objetivo es conectar a los emprendedores con el mercado global, especialmente con miras al lanzamiento del <strong>megapuerto de Chancay</strong>.
+            En <strong>Comercia.pe</strong>, estamos comprometidos con el desarrollo del comercio digital en Perú. Nos enfocamos en brindar una plataforma segura y confiable para que las personas puedan comprar y vender productos con facilidad. Nuestro objetivo es conectar a los emprendedores con el mercado global, especialmente con miras al lanzamiento del <strong>megapuerto de Chancay</strong>.
           </p>
         </div>
         <div className="image-container">
@@ -25,7 +25,7 @@ const Nosotros = () => {
       <section className="megapuerto-section">
         <h2>El Impacto del Megapuerto de Chancay</h2>
         <p>
-          El megapuerto de Chancay será una pieza clave en el crecimiento del comercio internacional en Perú. Este gran proyecto no solo facilitará el transporte de mercancías, sino que también abrirá nuevas oportunidades para los emprendedores locales. En <strong>ComerciaPe</strong>, estamos listos para aprovechar esta oportunidad y conectar a más personas con el comercio global.
+          El megapuerto de Chancay será una pieza clave en el crecimiento del comercio internacional en Perú. Este gran proyecto no solo facilitará el transporte de mercancías, sino que también abrirá nuevas oportunidades para los emprendedores locales. En <strong>Comercia.pe</strong>, estamos listos para aprovechar esta oportunidad y conectar a más personas con el comercio global.
         </p>
         <img src="/images/panoramica.jpeg" alt="Megapuerto de Chancay" className="megapuerto-image"/>
       </section>
