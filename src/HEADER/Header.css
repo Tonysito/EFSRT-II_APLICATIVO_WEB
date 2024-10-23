@@ -53,6 +53,8 @@ h1 {
     gap: 30px;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .navegacion-header a {

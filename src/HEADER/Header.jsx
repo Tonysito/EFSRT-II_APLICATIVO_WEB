@@ -19,8 +19,10 @@ const Header = () => {
           placeholder="Buscar productos..."
         />
                 <Formulario/>
-        <nav className="navegacion-header">
-          <a href="#tendencia">Tendencia</a>
+        
+      </div>
+      <div>
+      <nav className="navegacion-header">
           <div className="menu-comprar">
 
             <Link to="/Carrito">Comprar</Link>
