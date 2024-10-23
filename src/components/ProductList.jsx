@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-const ProductList = ({ usuarioNombre, allProducts, setProducts, countProducts, setCountProducts, total, setTotal }) => {
-    const [products, setProductsState] = useState([]);
+const ProductList = ({ usuarioNombre, allProducts, setAllProducts, countProducts, setCountProducts, total, setTotal }) => {
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         // Cargar los productos desde data.json
@@ -10,15 +10,14 @@ const ProductList = ({ usuarioNombre, allProducts, setProducts, countProducts, s
             try {
                 const response = await fetch('https://comerciape.netlify.app/data.json'); // Asegúrate de que la ruta sea correcta
                 const data = await response.json();
-                setProductsState(data); // Guardar los productos cargados
-                setProducts(data); // Actualizar allProducts también
+                setProducts(data);
             } catch (error) {
                 console.error('Error al cargar los datos:', error);
             }
         };
 
         fetchData();
-    }, [setProducts]);
+    }, []);
 
     const onAddProduct = product => {
         // Verificar si el usuario ha iniciado sesión
@@ -48,12 +47,12 @@ const ProductList = ({ usuarioNombre, allProducts, setProducts, countProducts, s
                 );
                 setTotal(total + product.price);
                 setCountProducts(countProducts + 1);
-                setProducts(updatedProducts);
+                setAllProducts(updatedProducts);
             } else {
                 // Si es un producto nuevo, añadirlo con cantidad 1
                 setTotal(total + product.price);
                 setCountProducts(countProducts + 1);
-                setProducts([...allProducts, { ...product, quantity: 1 }]);
+                setAllProducts([...allProducts, { ...product, quantity: 1 }]);
             }
         }
     };

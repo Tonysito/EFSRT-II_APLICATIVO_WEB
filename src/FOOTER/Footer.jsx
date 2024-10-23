@@ -1,15 +1,29 @@
 import React from 'react';
 import './Footer.css'; 
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
-//import { PiX } from 'react-icons/pi';
+import Swal from 'sweetalert2'; // Importar SweetAlert
 
 const Footer = () => {
+  const handleSubscribe = (e) => {
+    e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Gracias por suscribirte!',
+      text: 'Pronto te enviaremos novedades. No olvides registrarte para poder realizar compras.',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = '/'; // Redirigir al inicio
+      }
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-header">
         <div className="footer-logo">
-          <img className='loguito' src="/images/LogoPNG.png"  alt="Logo de ComerciaPe" /> {/* Colocar logo */}
-   
+          <img className='loguito' src="/images/LogoPNG.png" alt="Logo de ComerciaPe" />
         </div>
         <div className="footer-socials">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -43,7 +57,7 @@ const Footer = () => {
           <h2>Productos</h2>
           <a href="/">Tendencia</a>
           <a href="/">Ofertas</a>
-          <a href="/">Servicios</a>  {/* Ofrecer servicios */}
+          <a href="/">Servicios</a>
         </div>
         <div>
           <h2>Atención al cliente</h2>
@@ -53,10 +67,10 @@ const Footer = () => {
           <a href="/">Ayuda</a>
         </div>
         <div className="footer-register">
-          <h2>REGÍSTRATE</h2>
-          <form>
-            <input type="email" placeholder="Ingresa tu correo" required aria-label="Correo electrónico para registrarse"/>
-            <button type="submit">Registrarse</button>
+          <h2>Recibe nuestras novedades</h2>
+          <form onSubmit={handleSubscribe}> {/* Agregar el manejador aquí */}
+            <input type="email" placeholder="Ingresa tu correo" required aria-label="Correo electrónico para registrarse" />
+            <button type="submit">Suscribirse</button>
           </form>
         </div>
       </div>
