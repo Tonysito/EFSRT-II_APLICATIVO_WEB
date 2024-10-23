@@ -10,7 +10,7 @@ function Carrito() {
     const [countProducts, setCountProducts] = useState(0);
     const [usuarioNombre, setUsuarioNombre] = useState(null);
     const [userType, setUserType] = useState(null);
-    const [mostrarAgregarProducto, setMostrarAgregarProducto] = useState(false);
+ 
 
     useEffect(() => {
         const nombreGuardado = localStorage.getItem('usuarioNombre');
@@ -18,13 +18,10 @@ function Carrito() {
 
         if (nombreGuardado) {
             setUsuarioNombre(nombreGuardado);
-            setUserType(tipoUsuarioGuardado); // Establece el userType directamente
+            setUserType(tipoUsuarioGuardado);
         }
     }, []);
 
-    const toggleAgregarProductoForm = () => {
-        setMostrarAgregarProducto(prev => !prev);
-    };
 
     return (
         <>
@@ -46,19 +43,12 @@ function Carrito() {
                 setCountProducts={setCountProducts}
             />
 
-            {/* Botón para agregar productos solo si el usuario es vendedor */}
             {userType === 'Vendedor' && (
-                <button className='boton-agregar-producto' onClick={toggleAgregarProductoForm}>
-                    Agregar Producto
-                </button>
+                <AgregarProducto userType={userType} />
             )}
 
-            {/* Mostrar el formulario para agregar productos si es visible */}
-            {mostrarAgregarProducto && (
-                <AgregarProducto setAllProducts={setAllProducts} 
-                setMostrarAgregarProducto={setMostrarAgregarProducto}/>
-            )}
-            <div><p>Prueba 10</p></div>
+
+            <div><p>Prueba 11</p></div>
         </>
     );
 }

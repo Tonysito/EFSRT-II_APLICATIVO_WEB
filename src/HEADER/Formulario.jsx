@@ -27,7 +27,7 @@ const Formulario = () => {
     // Cargar usuarios desde usuarios.json
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch('https://comerciape.netlify.app/usuarios.json');
+        const response = await fetch('http://localhost:5000/usuarios');
         if (!response.ok) {
           throw new Error('Error al cargar usuarios');
         }
@@ -48,11 +48,25 @@ const Formulario = () => {
   }, []);
 
   const toggleRegisterForm = () => {
-    setMostrarFormulario(prevState => !prevState);
+    if (usuarioNombre) {
+      Swal.fire({
+        title: 'Funcionalidad en Desarrollo',
+        text: 'Ya estás autenticado. No puedes iniciar sesión nuevamente.',
+        icon: 'info',
+        confirmButtonText: 'Cerrar',
+        background: '#fff',
+        color: '#333',
+        confirmButtonColor: '#ff4d4f',
+      });
+    } else {
+      // Si no está autenticado, alternar el estado de mostrarFormulario
+      setMostrarFormulario(prevState => !prevState);
+    }
   };
 
   const validateForm = (e) => {
     e.preventDefault();
+
     let valid = true;
 
     // Validar correo electrónico

@@ -256,20 +256,25 @@ header {
 
  /* Botón flotante de agregar producto */
  .boton-agregar-producto {
+    all: unset;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    color: white;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
+    color: #0eb942;
+    bottom: 50%;
+    right: 40px;
     border-radius: 50%;
-    padding: 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     z-index: 100;
-  }
+    font-size: 140px;
+    background-color: white;
+}
   
   .boton-agregar-producto:hover {
-    background-color: #18a375;
-    color: white;
+    background-color: white;
+    color: #d80000;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
   }

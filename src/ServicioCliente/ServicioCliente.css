@@ -211,6 +211,9 @@
   
   /* Botón flotante de WhatsApp */
   .whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     color: white;
     bottom: 20px;

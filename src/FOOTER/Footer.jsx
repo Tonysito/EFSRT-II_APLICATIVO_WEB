@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css'; 
+import { useNavigate } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Swal from 'sweetalert2'; // Importar SweetAlert
 
@@ -17,6 +18,11 @@ const Footer = () => {
         window.location.href = '/'; // Redirigir al inicio
       }
     });
+  };
+
+  const navigate = useNavigate();
+  const pressClickReg = () => {
+      navigate('/Registro'); 
   };
 
   return (
@@ -44,27 +50,27 @@ const Footer = () => {
       <div className="footer-sections">
         <div>
           <h2>Nosotros</h2>
-          <a href="/Trabaja">Trabaja con nosotros</a>
-          <a href="/Blog">Blog</a>
-          <a href="/Acerca">Acerca de ComerciaPe</a>
+          <a href="#trabaja">Trabaja con nosotros</a>
+          <a href="#blog">Blog</a>
+          <a href="#acerca">Acerca de ComerciaPe</a>
         </div>
         <div>
           <h2>Cuenta</h2>
-          <a href="/">Crear cuenta emprendedor</a>
-          <a href="/">Crear cuenta</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); pressClickReg(); }}>Crear cuenta emprendedor</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); pressClickReg(); }}>Crear cuenta</a>
         </div>
         <div>
           <h2>Productos</h2>
-          <a href="/">Tendencia</a>
-          <a href="/">Ofertas</a>
-          <a href="/">Servicios</a>
+          <a href="#tendencia">Tendencia</a>
+          <a href="#ofertas">Ofertas</a>
+          <a href="#servicios">Servicios</a>
         </div>
         <div>
           <h2>Atención al cliente</h2>
-          <a href="/">Tu cuenta</a>
-          <a href="/">Tus pedidos</a>
-          <a href="/">Devoluciones y reemplazos</a>
-          <a href="/">Ayuda</a>
+          <a href="#cuenta">Tu cuenta</a>
+          <a href="#pedidos">Tus pedidos</a>
+          <a href="#devoluciones">Devoluciones y reemplazos</a>
+          <a href="#ayuda">Ayuda</a>
         </div>
         <div className="footer-register">
           <h2>Recibe nuestras novedades</h2>
@@ -77,8 +83,8 @@ const Footer = () => {
       <div className="footer-rights">
         <p>Copyright &copy; 2024 ComerciaPe. Todos los derechos reservados.</p>
         <p>
-          <a href="/privacidad">Política de privacidad</a> | 
-          <a href="/">Términos y condiciones</a>
+          <a href="#privacidad">Política de privacidad</a> | 
+          <a href="#terminos">Términos y condiciones</a>
         </p>
       </div>
     </footer>

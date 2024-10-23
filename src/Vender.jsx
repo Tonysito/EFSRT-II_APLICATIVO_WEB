@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import infVendEmp from './infVendEmp.json';
 import '../src/Vender.css';
 import '../src/mediaqueries.css';
 
 const MainVender = () => {
+
+    const [usuarioNombre, setUsuarioNombre] = useState(null);
+
+    useEffect(() => {
+        const nombreGuardado = localStorage.getItem('usuarioNombre');
+        if (nombreGuardado) {
+          setUsuarioNombre(nombreGuardado);
+        }
+      }, []);
+
     const navigate = useNavigate();
     const pressClickReg = () => {
         navigate('/Registro'); 
@@ -25,7 +35,11 @@ const MainVender = () => {
                     <h3>UNETE A NUESTRO EQUIPO DE </h3>
                     <h3>EMPRENDEDORES EXITOSOS</h3>
                     <aside className="asid_banner_btn_reg">
-                        <button onClick={pressClickReg}>Regístrate</button>
+                    {usuarioNombre ? (
+                            <button disabled>Hola, {usuarioNombre}!</button> // Muestra el nombre del usuario
+                        ) : (
+                            <button onClick={pressClickReg}>Regístrate</button> // Botón de registro si no hay usuario
+                        )}
                         <span>!Obten un envio gratis para tu primera venta!</span>
                     </aside>
                 </div>
