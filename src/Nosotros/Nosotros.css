@@ -1,0 +1,210 @@
+/* Estilos generales */
+.nosotros-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+  }
+  
+  /* Hero section */
+  .hero-section {
+    background-image: url('/public/images/hero-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+    padding: 100px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .hero-section p {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  
+  /* Sección "Sobre Nosotros" */
+  .nosotros-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nosotros-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .text-container {
+    max-width: 60%;
+  }
+  
+  .text-container h2 {
+    font-size: 2.4rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .text-container h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #27ae60;
+    margin-top: 10px;
+  }
+  
+  .text-container p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  .image-container {
+    max-width: 35%;
+  }
+  
+  .image-container img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .image-container img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Sección "Megapuerto" */
+  .megapuerto-section {
+    background-color: #ecf0f1;
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+  
+  .megapuerto-section h2 {
+    font-size: 2.4rem;
+    color: #2980b9;
+    margin-bottom: 20px;
+  }
+  
+  .megapuerto-section p {
+    font-size: 1.15rem;
+    color: #34495e;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .megapuerto-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .megapuerto-image:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Sección "Valores" */
+  .valores-section {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .valores-section h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .valores-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .valores-section ul li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+  }
+  
+  .valores-section ul li::before {
+    content: '✔';
+    color: #f39c12;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .nosotros-content {
+      flex-direction: column;
+    }
+  
+    .text-container {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .image-container {
+      max-width: 100%;
+    }
+  
+    .hero-section h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+  
+    .megapuerto-section img {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-section p {
+      font-size: 1rem;
+    }
+  
+    .nosotros-content {
+      padding: 20px;
+    }
+  
+    .megapuerto-section,
+    .valores-section {
+      padding: 20px;
+    }
+  }
+  

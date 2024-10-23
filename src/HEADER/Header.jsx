@@ -40,9 +40,11 @@ const Header = () => {
               <a href="#vender-productos">Vender productos</a>
               <a href="#vender-servicios">Vender servicios</a>
             </div>
+
           </div>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#servicio-cliente">Servicio al Cliente</a>
+          <Link to="/Nosotros">Nosotros</Link>
+  
+          <Link to="/ServicoCliente">Servicio al cliente</Link>
         </nav>
       </div>
     </header>
