@@ -48,7 +48,7 @@ function Carrito() {
             )}
 
 
-            <div><p>Prueba 11</p></div>
+            <div><p>Prueba 12</p></div>
         </>
     );
 }
