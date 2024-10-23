@@ -48,7 +48,7 @@ function Carrito() {
 
             {/* Botón para agregar productos solo si el usuario es vendedor */}
             {userType === 'Vendedor' && (
-                <button onClick={toggleAgregarProductoForm}>
+                <button className='boton-agregar-producto' onClick={toggleAgregarProductoForm}>
                     Agregar Producto
                 </button>
             )}
@@ -58,7 +58,7 @@ function Carrito() {
                 <AgregarProducto setAllProducts={setAllProducts} 
                 setMostrarAgregarProducto={setMostrarAgregarProducto}/>
             )}
-            <div><p>Prueba 9</p></div>
+            <div><p>Prueba 10</p></div>
         </>
     );
 }

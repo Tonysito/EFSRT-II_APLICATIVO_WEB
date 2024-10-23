@@ -267,7 +267,7 @@ const Registro = () => {
                     />
                     {errors.phoneError && <div className="invalid-feedback">{errors.phoneError}</div>}
                 </div>
-                <button type="submit" className="btn btn-primary">Aceptación y registro</button>
+                <button type="submit" className="btn btn-success">Aceptación y registro</button>
             </form>
         </div>
     );

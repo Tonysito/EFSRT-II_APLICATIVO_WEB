@@ -191,7 +191,8 @@ const Formulario = () => {
               <p className="signup">
                 No tienes una cuenta?
                 {' '}
-                <button 
+                <br></br>
+                <button className='button-crear-cuenta' 
                   rel="noopener noreferrer"
                   onClick={() => {
                     pressClickReg();
