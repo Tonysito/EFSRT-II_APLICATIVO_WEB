@@ -1,9 +1,9 @@
 .footer {
-    background-color: #f0f4f8; /* Color de fondo suave */
-    padding: 40px 20px; /* Mayor espaciado */
-    text-align: center; /* Centrar el texto */
-    font-family: 'Arial', sans-serif; /* Fuente legible */
-    border-top: 2px solid #007bff; /* Borde superior para separación */
+    background-color: #f0f4f8;
+    border-top: 2px solid #007bff;
+    font-family: Arial,sans-serif;
+    padding: 20px 20px;
+    text-align: center;
 }
 
 .footer-header {
@@ -46,10 +46,9 @@
 }
 
 .footer-sections div {
-    flex: 1; /* Cada sección ocupará el mismo espacio */
-    margin: 10px; /* Espaciado lateral */
-    min-width: 150px; /* Ancho mínimo para responsividad */
-    text-align: left; /* Alinear texto a la izquierda */
+    flex: 1 1;
+    margin: 10px;
+    text-align: left;
 }
 
 .footer-sections h2 {
@@ -122,9 +121,4 @@
 
 .footer-register button:hover {
     background-color: #0056b3; /* Color más oscuro al pasar el ratón */
-}
-
-.loguito {
-    width: 150px; /* Asegurar que el logo sea responsivo */
-    height: 20px; /* Mantener la relación de aspecto */
 }
