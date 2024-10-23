@@ -28,6 +28,11 @@
     font-size: 1.5rem;
     font-weight: 300;
   }
+
+  .header-section a {
+    color: white;
+    z-index: 100;
+  }
   
   /* FAQ Section */
   .faq-section {
@@ -218,7 +223,7 @@
     border-radius: 50%;
     padding: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
   
   .whatsapp-button img {
@@ -226,6 +231,7 @@
   }
   
   .whatsapp-button:hover {
-    background-color: #128C7E;
+    background-color: #18a375;
+    transform: scale(1.1);
   }
   

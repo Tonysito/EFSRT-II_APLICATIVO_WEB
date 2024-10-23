@@ -98,15 +98,6 @@ const ServicioCliente = () => {
         {mensaje && <p className="success-message">{mensaje}</p>}
       </section>
 
-      <section className="support-section">
-        <h2>Otros Recursos</h2>
-        <ul>
-          <li><a href="/">Políticas de Devolución</a></li>
-          <li><a href="/">Términos y Condiciones</a></li>
-          <li><a href="/">Privacidad y Seguridad</a></li>
-        </ul>
-      </section>
-
       {/* Botón flotante de WhatsApp */}
       <a
         href="https://wa.me/51960537380"
