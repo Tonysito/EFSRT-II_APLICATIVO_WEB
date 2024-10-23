@@ -58,7 +58,7 @@ function Carrito() {
                 <AgregarProducto setAllProducts={setAllProducts} 
                 setMostrarAgregarProducto={setMostrarAgregarProducto}/>
             )}
-            <div><p>Prueba 1</p></div>
+            <div><p>Prueba 2</p></div>
         </>
     );
 }
