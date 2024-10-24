@@ -163,6 +163,12 @@
     font-size: 1.3rem;
   }
   
+  @media (max-width: 960px) {
+    .nosotros-container {
+        padding-top: 200px;
+    }
+  }
+
   /* Responsividad */
   @media (max-width: 768px) {
     .nosotros-content {

@@ -37,7 +37,7 @@ header {
 .tienda {
     display: flex;
     justify-content: space-between;
-    padding: 30px 0 40px 0;
+    padding: 20px;
     max-width: 1200px;
     margin: auto;
     position: relative;
@@ -145,38 +145,47 @@ header {
 
 /* Main */
 .container-items {
-    grid-gap: 30px;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    margin: auto auto 80px;
-    max-width: 1200px;
-    top: 120px;
-    position: relative;
-    padding-bottom: 80px;
+    grid-template-columns: repeat(4, 1fr); /* Mantener 4 columnas */
+    gap: 30px; /* Espacio entre elementos */
+    margin: auto; /* Centrar el contenedor */
+    max-width: 1200px; /* Ancho máximo */
+    padding: 0 20px; /* Espaciado lateral */
+    padding-bottom: 80px; /* Espaciado inferior */
+    width: 100%; /* Ancho al 100% */
+    height: 100%; /* Altura al 100% (opcional, según el contenido) */
+	padding-top: 120px;
 }
 
+/* Ajustar la altura de los elementos en el grid */
 .item {
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	transition: all .3s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all .3s ease-in-out;
+    display: flex; /* Usar flex para hacer que el contenido se ajuste */
+    flex-direction: column; /* Alinear el contenido en columna */
 }
+
+/* Mantener el tamaño de imagen consistente */
+.item img {
+    border-radius: 10px 10px 0 0;
+    height: 250px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Asegurar que las imágenes cubran el área sin deformarse */
+    width: 100%; /* Ancho al 100% */
+}
+
 
 .item:hover {
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 	transform: scale(1.05);
 }
 
-.item img {
-    border-radius: 10px 10px 0 0;
-    height: 250px;
-    object-fit: cover;
-    transition: all .5s;
-    width: 100%;
-}
+
 
 .item figure {
 	overflow: hidden;
+	margin: 0 !important;
 }
 
 .item:hover img {
@@ -283,3 +292,225 @@ header {
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
   }
+
+@media (max-width: 1200px){
+	.tienda {
+		max-width: 1000px;
+	}
+
+	.container-items {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr); /* Mantener 4 columnas */
+		gap: 30px; /* Espacio entre elementos */
+		margin: auto; /* Centrar el contenedor */
+		max-width: 1000px; /* Ancho máximo */
+		padding: 0 20px; /* Espaciado lateral */
+		padding-bottom: 80px; /* Espaciado inferior */
+		width: 100%; /* Ancho al 100% */
+		height: 100%; /* Altura al 100% (opcional, según el contenido) */
+		padding-top: 120px;
+	}
+
+	.item {
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		transition: all .3s ease-in-out;
+	}
+	.item img {
+		height: 200px;
+
+	}
+	.info-product {
+		gap: 10px;
+		padding: 15px;
+	}
+	.info-product button {
+		max-width: 100%;
+		font-size: 90%;
+	}
+	.info-product h3, .info-product p {
+		font-size: 100%;
+	}
+	.boton-agregar-producto {
+		scale: .7;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+@media (max-width: 960px){
+	.tienda {
+		max-width: 860px;
+		padding-top: 80px;
+	}
+
+	.container-items {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr); /* Mantener 4 columnas */
+		gap: 20px; /* Espacio entre elementos */
+		margin: auto; /* Centrar el contenedor */
+		max-width: 860px; /* Ancho máximo */
+		padding: 0 20px; /* Espaciado lateral */
+		padding-bottom: 50px; /* Espaciado inferior */
+		width: 100%; /* Ancho al 100% */
+		height: 100%; /* Altura al 100% (opcional, según el contenido) */
+		padding-top: 120px;
+	}
+
+	.item {
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		transition: all .3s ease-in-out;
+	}
+	.item img {
+		height: 180px;
+		object-fit: cover;
+	}
+	.info-product {
+		gap: 5px;
+		padding: 10px;
+	}
+	.info-product button {
+		max-width: 100%;
+		font-size: 70%;
+	}
+	.info-product h3, .info-product p {
+		font-size: 90%;
+	}
+}
+
+@media (max-width: 768px){
+
+	.tienda {
+		max-width:600px ;
+	}
+
+	.container-items {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+		padding: 0 20px;
+		padding-bottom: 50px;
+		width: 100%;
+		max-width: 600px;
+		padding-top: 120px;
+		margin: auto;
+		width: 100%;
+	}
+
+	.item {
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		transition: all .3s ease-in-out;
+	}
+	.item img {
+		max-height: 180px;
+		object-fit: cover;
+	}
+	.info-product {
+		gap: 5px;
+		padding: 10px;
+	}
+	.info-product button {
+		max-width: 100%;
+		font-size: 60%;
+	}
+	.boton-agregar-producto {
+		scale: .6;
+	}
+}
+
+@media (max-width: 550px){
+
+	.tienda {
+		max-width: 400px ;
+	}
+
+	.container-items {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+		padding: 0 20px;
+		padding-bottom: 50px;
+		max-width: 400px;
+		width: 100%;
+		padding-top: 120px;
+		margin: auto;
+		width: 100%;
+	}
+
+	.item {
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		transition: all .3s ease-in-out;
+	}
+	.item img {
+		max-height: 200px;
+		object-fit: cover;
+	}
+	.info-product {
+		gap: 5px;
+	}
+	.info-product button {
+		max-width: 100%;
+		font-size: 70%;
+	}
+	.container-cart-products {
+		width: 350px;
+	}
+	.boton-agregar-producto {
+		scale: .5;
+	}
+	.form-container{
+		width: 100%;
+		margin: 20px;
+	}
+
+}
+
+@media (max-width: 360px){
+
+	.tienda {
+		top: 90px;
+		max-width: 300px;
+	}
+
+
+	.container-items {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+		max-width: 300px;
+		padding: 0 20px;
+		padding-bottom: 50px;
+		width: 100%;
+		padding-top: 90px;
+		margin: auto;
+		width: 100%;
+	}
+
+	.item img {
+		height: 100px;
+		object-fit: cover;
+
+	}
+	.info-product {
+		gap: 5px;
+		padding: 10px;
+	}
+	.info-product button {
+		max-width: 100%;
+		font-size: 60%;
+		padding: 5px;
+		border-radius: 5px;
+	}
+	.info-product h3, .info-product p {
+		font-size: 80%;
+	}
+	.container-cart-products {
+		width: 280px;
+	}
+
+}
+

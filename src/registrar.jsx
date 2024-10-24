@@ -128,21 +128,40 @@ const Registro = () => {
                             popup: 'animated bounce'
                         }
                     });
-
-
-                    window.location = '/Carrito';
     
-         
                 } else {
-                    throw new Error('Error en la respuesta del servidor');
+                    Swal.fire({
+                        title: 'Estamos trabajando',
+                        text: 'Esta función aun esta en desarrollo',
+                        icon: 'info',
+                        confirmButtonText: 'Cerrar',
+                        customClass: {
+                            popup: 'animated bounce'
+                        }
+                    });
                 }
 
             } catch (error) {
-                console.error('Error al registrar el usuario:', error);
-                alert('Hubo un error al conectar con el servidor.');
+                Swal.fire({
+                    title: 'Estamos trabajando',
+                    text: 'Esta función aun esta en desarrollo',
+                    icon: 'info',
+                    confirmButtonText: 'Cerrar',
+                    customClass: {
+                        popup: 'animated bounce'
+                    }
+                });
             }
         } else {
-            alert("Por favor, complete todos los campos requeridos.");
+                Swal.fire({
+                    title: 'Advertencia',
+                    text: 'Por favor, complete todos los campos requeridos',
+                    icon: 'warning',
+                    confirmButtonText: 'Cerrar',
+                    customClass: {
+                        popup: 'animated bounce'
+                    }
+                });
         }
     };
 

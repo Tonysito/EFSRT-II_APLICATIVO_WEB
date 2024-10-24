@@ -132,39 +132,78 @@ h1 {
     gap: 10px;
 }
 
-/* Media Queries para hacer el header responsive */
-@media (max-width: 768px) {
-    .contenido-header {
+/* Botón de Menú Hamburguesa */
+.menu-btn {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001; /* Asegura que esté por encima del menú */
+}
+
+/* Ocultar menú de navegación en pantallas pequeñas */
+.navegacion-header {
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 960px) {
+    .menu-btn {
+        display: block;
+    }
+    .navegacion-header {
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: #ffffff;
+        padding: 60px 20px;
+        transform: translateX(100%);
+        width: 250px;
+        z-index: 1000;
+    }
+
+    /* Mostrar el menú cuando esté abierto */
+    .navegacion-header.show-menu {
+        transform: translateX(0);
+    }
+
+    .contenido-header {
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .logo-header {
-        margin-bottom: 15px;
+        margin-bottom: 0;
     }
 
     .barra-busqueda-header {
         width: 100%;
         margin-bottom: 15px;
     }
-
-    .navegacion-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
+/* Ajustes adicionales para pantallas más pequeñas */
+@media (max-width: 350px) {
     .navegacion-header a {
         font-size: 14px;
     }
 
     .barra-busqueda-header {
         width: 100%;
+    }
+
+    .navegacion-header {
+        padding: 50px 10px;
+    }
+
+    .logo-header img {
+        width: 150px; /* Reducir el tamaño del logo en pantallas pequeñas */
     }
 }

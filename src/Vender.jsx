@@ -6,22 +6,20 @@ import '../src/mediaqueries.css';
 import { FaMinusSquare, FaPlusSquare } from "react-icons/fa";
 
 const MainVender = () => {
-
     const [usuarioNombre, setUsuarioNombre] = useState(null);
+    const [indexActive, setIndexActive] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const nombreGuardado = localStorage.getItem('usuarioNombre');
         if (nombreGuardado) {
-          setUsuarioNombre(nombreGuardado);
+            setUsuarioNombre(nombreGuardado);
         }
-      }, []);
+    }, []);
 
-    const navigate = useNavigate();
     const pressClickReg = () => {
         navigate('/Registro'); 
     };
-
-    const [indexActive, setIndexActive] = useState(null);
 
     const pressClickMasInfo = (i) => {
         setIndexActive(indexActive === i ? null : i);
@@ -29,30 +27,30 @@ const MainVender = () => {
 
     return (
         <div>
-            {/* section 1 --- Inicio */}
+            {/* Section 1 - Banner */}
             <section className="sec_banner_reg">
                 <img className="img_banner_reg" src="../images/img_banner_reg.jpg" alt="Banner de registro" />
                 <div>
-                    <h3>UNETE A NUESTRO EQUIPO DE </h3>
+                    <h3>UNETE A NUESTRO EQUIPO DE</h3>
                     <h3>EMPRENDEDORES EXITOSOS</h3>
                     <aside className="asid_banner_btn_reg">
-                    {usuarioNombre ? (
-                            <button disabled>Hola, {usuarioNombre}</button> // Muestra el nombre del usuario
+                        {usuarioNombre ? (
+                            <button disabled>Hola, {usuarioNombre}</button>
                         ) : (
-                            <button onClick={pressClickReg}>Regístrate</button> // Botón de registro si no hay usuario
+                            <button onClick={pressClickReg}>Regístrate</button>
                         )}
-                        <span>!Obten un envio gratis para tu primera venta!</span>
+                        <span>¡Obtén un envío gratis para tu primera venta!</span>
                     </aside>
                 </div>
             </section>
-            {/* section 1 --- Fin */}
-            {/* section 2 --- Inicio */}
+
+            {/* Section 2 - Estadísticas */}
             <aside className="asid_estadisticas">
                 <p>Más del 70 % de los emprendedores de Comercia.pe consiguen su primera</p>
                 <p>venta en menos de 60 días.</p>
             </aside>
-            {/* section 2 --- Fin */}
-            {/* section 3 --- Inicio */}
+
+            {/* Section 3 - Beneficios */}
             <section className="sec_empieza_ben">
                 <div>
                     <img src="../images/img_empieza_ben.png" alt="Inicio con beneficios" />
@@ -67,8 +65,8 @@ const MainVender = () => {
                     </div>
                 </div>
             </section>
-            {/* section 3 --- Fin */}
-            {/* section 4 --- Inicio */}
+
+            {/* Section 4 - Puntos y Reseñas */}
             <section className="sec_puntos_resenias">
                 <div className="div_puntos">
                     <h3>¿Por qué crear una cuenta de vendedor de Comercia.pe?</h3>
@@ -100,8 +98,8 @@ const MainVender = () => {
                     ))}
                 </div>
             </section>
-            {/* section 4 --- Fin */}
-            {/* section 5 --- Inicio */}
+
+            {/* Section 5 - Estadísticas adicionales */}
             <aside className="asid_estadisticas">
                 <div className="div_estadisticas">
                     {infVendEmp.d_est.map((estadistica, i) => (
@@ -112,8 +110,8 @@ const MainVender = () => {
                     ))}
                 </div>
             </aside>
-            {/* section 5 --- Fin */}
-            {/* section 6 --- Inicio */}
+
+            {/* Section 6 - Preguntas Frecuentes */}
             <section className="sec_preg_frec">
                 <h3>PREGUNTAS FRECUENTES</h3>
                 <div>
@@ -158,7 +156,6 @@ const MainVender = () => {
                     ))}
                 </div>
             </section>
-            {/* section 6 --- Fin */}
         </div>
     );
 }

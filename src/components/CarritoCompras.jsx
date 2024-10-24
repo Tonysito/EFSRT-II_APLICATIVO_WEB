@@ -93,7 +93,8 @@ export const CarritoCompras = ({
 			<div className='container-icon'>
 				<div
 					className='container-cart-icon'
-					onClick={() => setActive(true)}
+					onClick={() => setActive(prevActive => !prevActive)}
+
 				>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -116,7 +117,7 @@ export const CarritoCompras = ({
 
 				<div
 					className={`container-cart-products ${active ? '' : 'hidden-cart'}`}
-					onMouseLeave={() => setActive(false)}
+
 				>
 					{allProducts.length ? (
 						<>

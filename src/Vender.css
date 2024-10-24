@@ -17,9 +17,10 @@
 .sec_banner_reg div{
     position: absolute;
     right: 2%;
-    width: 48%;
+    width: 55%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-end;
 }
 .sec_banner_reg h3{
     margin-top: 0px;
@@ -27,13 +28,16 @@
     font-size: 3.2em;
     color: #044fb5;
     width: 100%;
+    text-align: right;
 }
+
+
 .asid_banner_btn_reg{
     font-size: 1.2em;
     background-color: rgb(22, 231, 22);
     border-radius: 20px;
     color: white;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -51,6 +55,8 @@
     margin: 0 10px 0 0;
     transition: all .6s linear;
     padding: 5px;
+    display: flex;
+    justify-items: flex-end;
 }
 .asid_banner_btn_reg button:hover{
     scale: 1.1;
@@ -261,3 +267,153 @@
     margin: 10px 0px;
 }
 
+/* Media Query para pantallas de máximo 1200px */
+@media (max-width: 1300px) {
+    .sec_banner_reg h3 {
+        font-size: 2.5em ;
+    }
+    .asid_banner_btn_reg {
+        font-size: 1em;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .asid_estadisticas {
+        font-size: 18px ;
+    }
+    .sec_empieza_ben img {
+        width: 100% ;
+    }
+    .sec_puntos_resenias {
+        padding: 20px ;
+    }
+    .div_estadisticas div {
+        width: 250px ;
+    }
+}
+
+/* Media Query para pantallas de máximo 960px */
+@media (max-width: 1100px) {
+    .sec_banner_reg{
+       padding-top: 200px ;
+    }
+    .sec_banner_reg h3 {
+        font-size: 2em ;
+    }
+    .asid_banner_btn_reg {
+        font-size: 1.1em; /* Tamaño de fuente para los botones */
+        display: flex; /* Cambiar a flex para permitir alineación */
+        justify-content: flex-end; /* Alinear los botones a la derecha */
+        width: 100%; /* Asegurarse de que ocupe todo el ancho */
+    }
+    .asid_estadisticas {
+        font-size: 16px ;
+    }
+    .sec_empieza_ben img {
+        width: 100% ;
+    }
+    .div_puntos div {
+        flex-direction: column ;
+        align-items: center ;
+    }
+    .div_estadisticas div {
+        width: 100% ;
+        margin: 10px 0;
+    }
+}
+
+/* Media Query para pantallas de máximo 768px */
+@media (max-width: 768px) {
+    .sec_banner_reg {
+        position: relative; /* Cambiar a relativo para permitir el posicionamiento absoluto dentro */
+    }
+    .sec_banner_reg div {
+
+        margin-left: 5%; /* Ajustar margen a la izquierda */
+        right: 2%;
+        width: 48%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .sec_banner_reg h3 {
+        font-size: 2.5em; /* Tamaño de fuente para el encabezado */
+        margin-top: 0; /* Margen superior para empujar el título hacia arriba */
+        text-align: right; /* Alineación del texto a la derecha */
+    }
+    .asid_banner_btn_reg {
+        font-size: 1.1em; /* Tamaño de fuente para los botones */
+        display: flex; /* Cambiar a flex para permitir alineación */
+        justify-content: flex-end; /* Alinear los botones a la derecha */
+        width: 100%; /* Asegurarse de que ocupe todo el ancho */
+    }
+    .asid_banner_btn_reg button {
+        font-size: 1.2em;
+        margin: 5px 0;
+    }
+    .sec_empieza_ben {
+        flex-direction: column;
+    }
+    .div_resenias div {
+        width: 90%;
+    }
+}
+
+/* Media Query para pantallas de máximo 450px */
+@media (max-width: 460px) {
+
+
+    .sec_banner_reg h3 {
+        font-size: 1.5em; /* Reducir aún más el tamaño de la fuente del encabezado */
+        text-align: center; /* Centrar el texto */
+        margin: 0; /* Eliminar margen */
+    }
+
+    .asid_banner_btn_reg {
+        font-size: 0.9em; /* Tamaño de fuente para los botones */
+        display: flex; /* Cambiar a flex para permitir alineación */
+        justify-content: center; /* Alinear los botones al centro */
+        flex-direction: column; /* Colocar los botones en columna */
+        width: 100%; /* Asegurarse de que ocupe todo el ancho */
+    }
+
+    .asid_banner_btn_reg button {
+        width: 100%; /* Hacer que los botones ocupen todo el ancho */
+        margin: 3px 0; /* Espaciado entre los botones */
+        font-size: 0.9em; /* Ajustar el tamaño de fuente de los botones */
+    }
+
+    .asid_estadisticas {
+        font-size: 12px; /* Ajustar el tamaño de fuente de las estadísticas */
+        text-align: center; /* Centrar el texto */
+    }
+
+    .sec_empieza_ben img {
+        width: 100%; /* Hacer que las imágenes ocupen el ancho completo */
+    }
+
+    .div_estadisticas div {
+        width: 100%; /* Hacer que los divs de estadísticas ocupen todo el ancho */
+        margin: 5px 0; /* Espaciado entre los divs */
+    }
+
+    .sec_puntos_resenias {
+        padding: 5px; /* Reducir el padding */
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar los elementos */
+    }
+
+    .div_resenias div {
+        width: 90%; /* Ajustar el ancho de los divs de reseñas */
+        margin: 5px auto; /* Centrar los divs de reseñas */
+    }
+
+    .sec_preg_frec {
+        width: 95%; /* Ajustar el ancho de la sección de preguntas frecuentes */
+    }
+
+    .div_respuesta {
+        padding: 3px; /* Reducir padding en respuestas */
+    }
+
+
+}

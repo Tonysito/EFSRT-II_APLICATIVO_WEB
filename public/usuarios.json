@@ -1,42 +1,22 @@
 [
   {
     "id": 1,
-    "email": "leonardo_pereyra@gmail.com",
-    "password": "Leon1234##",
-    "companyName": "Expoferias",
-    "firstName": "Leonardo",
-    "lastName": "Pereyra",
-    "phone": "989898989",
-    "userType": "Comprador"
+    "email": "grupo6@gmail.com",
+    "password": "Grupo6666##",
+    "companyName": "Cibertec",
+    "firstName": "Grupo 6",
+    "lastName": "Completos",
+    "phone": "969696969",
+    "userType": "Vendedor"
   },
   {
     "id": 2,
-    "email": "anthony_espinoza@gmail.com",
-    "password": "Tony1234##",
-    "companyName": "Cherika",
-    "firstName": "Anthony",
-    "lastName": "Espinoza",
-    "phone": "969696969",
-    "userType": "Comprador"
-  },
-  {
-    "id": 3,
-    "email": "marcos_sermeno@gmail.com",
-    "password": "marco1234##",
-    "companyName": "Sermenio",
-    "firstName": "Marcos",
-    "lastName": "Sermeño",
-    "phone": "999666999",
-    "userType": "Vendedor"
-  },
-  {
-    "id": 4,
-    "email": "jeanluisuribe@gmail.com",
-    "password": "uribe1234##",
+    "email": "pjuribe@gmail.com",
+    "password": "Uribe1234##",
     "companyName": "Cibertec",
-    "firstName": "Jeanluis",
+    "firstName": "Jean Luis",
     "lastName": "Uribe",
-    "phone": "933333333",
-    "userType": "Vendedor"
+    "phone": "999999999",
+    "userType": "Comprador"
   }
 ]

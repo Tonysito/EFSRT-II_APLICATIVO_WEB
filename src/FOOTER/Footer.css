@@ -123,3 +123,96 @@
     background-color: black; /* Color más oscuro al pasar el ratón */
     transform: scale(1.1);
 }
+
+/* Media Query para pantallas de hasta 768px */
+@media (max-width: 768px) {
+    .footer-header {
+        flex-direction: row; /* Mantener la dirección horizontal */
+        justify-content: space-between; /* Espacio entre logo y redes */
+    }
+
+    .footer-logo img {
+        width: 150px; /* Reducir el tamaño del logo */
+        margin-right: 10px; /* Espacio a la derecha del logo */
+    }
+
+    .footer-sections {
+        flex-direction: row; /* Mantener las secciones en fila */
+        flex-wrap: wrap; /* Permitir que las secciones se envuelvan */
+        justify-content: center; /* Centrar las secciones */
+    }
+
+    .footer-sections div {
+        text-align: center; /* Centrar el texto en las secciones */
+        margin: 10px; /* Espacio uniforme entre secciones */
+    }
+
+    .footer-register form {
+        flex-direction: row; /* Mantener en fila */
+        justify-content: center; /* Centrar horizontalmente */
+    }
+
+    .footer-register input[type="email"] {
+        width: 200px; /* Ajustar el ancho del input */
+        margin-right: 5px; /* Espacio a la derecha del input */
+    }
+
+    .footer-register button {
+        padding: 8px 10px; /* Ajustar el padding del botón */
+    }
+}
+
+/* Media Query para pantallas de hasta 450px */
+@media (max-width: 450px) {
+    .footer-header {
+        flex-direction: column; /* Cambiar a columna */
+        align-items: center; /* Centrar elementos */
+        margin-bottom: 15px; /* Espacio inferior */
+    }
+
+    .footer-logo img {
+        width: 120px; /* Reducir el tamaño del logo */
+        margin-bottom: 10px; /* Espacio debajo del logo */
+    }
+
+    .footer-socials {
+        gap: 10px; /* Reducir espacio entre iconos */
+    }
+
+    .footer-sections {
+        flex-direction: column; /* Cambiar a disposición vertical */
+        align-items: center; /* Centrar secciones */
+    }
+
+    .footer-sections div {
+        text-align: center; /* Centrar texto en secciones */
+        margin-bottom: 15px; /* Espacio entre secciones */
+    }
+
+    .footer-sections h2 {
+        font-size: 18px; /* Reducir tamaño de los títulos */
+    }
+
+    .footer-sections a {
+        font-size: 14px; /* Reducir tamaño del texto de enlaces */
+    }
+
+    .footer-rights p {
+        font-size: 14px; /* Reducir tamaño del texto de derechos */
+    }
+
+    .footer-register form {
+        flex-direction: column; /* Cambiar a disposición vertical */
+        align-items: center; /* Centrar formulario */
+    }
+
+    .footer-register input[type="email"] {
+        width: 100%; /* El input ocupa todo el ancho */
+        margin-bottom: 10px; /* Espacio debajo del input */
+    }
+
+    .footer-register button {
+        width: 100%; /* El botón ocupa todo el ancho */
+    }
+}
+

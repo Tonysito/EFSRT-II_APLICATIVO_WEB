@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Importa SweetAlert
 import './Header.css';
 import Formulario from './Formulario';
+import { RxHamburgerMenu } from 'react-icons/rx'; // Importar el ícono de hamburguesa
+import { AiOutlineClose } from 'react-icons/ai'; // Ícono de cierre (una "X")
 
 
 const Header = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar el menú hamburguesa
+
   const handleSearchKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault(); // Evitar que la página se recargue
@@ -19,6 +24,10 @@ const Header = () => {
         confirmButtonColor: '#ff4d4f',
       });
     }
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); // Alterna el estado del menú (abierto/cerrado)
   };
 
   return (
@@ -39,8 +48,16 @@ const Header = () => {
         />
         <Formulario />
       </div>
+
+      <button className="menu-btn" onClick={toggleMenu}>
+          {menuOpen ? (
+            <AiOutlineClose size={30} color="#ff4d4f" /> // Mostrar una "X" cuando el menú está abierto
+          ) : (
+            <RxHamburgerMenu size={30} color="#333" /> // Mostrar el ícono de hamburguesa cuando está cerrado
+          )}
+        </button>
       <div>
-        <nav className="navegacion-header">
+        <nav className={`navegacion-header ${menuOpen ? 'show-menu' : ''}`}>
           <div className="menu-comprar">
             <Link to="/Carrito">Comprar</Link>
             <div className="submenu">

@@ -83,13 +83,29 @@ const AgregarProducto = ({ setAllProducts }) => {
           });
         } else {
           // Si la respuesta no es exitosa, manejar el error aquí
-          console.error('Error en la respuesta del servidor:', response.statusText);
+          Swal.fire({
+            title: 'Estamos trabajando',
+            text: 'Esta función aun esta en desarrollo',
+            icon: 'info',
+            confirmButtonText: 'Cerrar',
+            customClass: {
+                popup: 'animated bounce'
+            }
+        });
           // Aquí puedes optar por no mostrar la alerta de error si no lo deseas
           // O podrías mostrar un mensaje genérico, si lo prefieres.
         }
       } catch (error) {
         // Mostrar alerta de error solo si hay un error en el fetch
-        console.error('Error en el fetch:', error);
+        Swal.fire({
+          title: 'Estamos trabajando',
+          text: 'Esta función aun esta en desarrollo',
+          icon: 'info',
+          confirmButtonText: 'Cerrar',
+          customClass: {
+              popup: 'animated bounce'
+          }
+      });
         // Aquí también puedes optar por no mostrar la alerta de error si no lo deseas
       }
     } else {
