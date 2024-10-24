@@ -68,39 +68,5 @@
     "price": 569.7,
     "quantity": 1,
     "img": "https://globalshopperu.com/cdn/shop/files/IMG-20240118-WA0002_grande.jpg?v=1707882990"
-  },
-  {
-    "id": 11,
-    "nameProduct": "celular",
-    "price": 100,
-    "quantity": 1,
-    "img": "https://img.freepik.com/vector-premium/celular-moderno_490053-11.jpg"
-  },
-  {
-    "id": 12,
-    "nameProduct": "el abc",
-    "price": 10,
-    "quantity": 1,
-    "img": "https://s.alicdn.com/@sc04/kf/Hb079a70ae3f647dc8e0efe0c4c1393e0B.jpg_720x720q50.jpg"
-  },
-  {
-    "id": 13
-  },
-  {
-    "id": 14,
-    "nameProduct": "hola",
-    "price": 100,
-    "quantity": 1,
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwyXeKDN29AmZgZPLS7n0Bepe8QmVappBwZCeA3XWEbWNdiDFB"
-  },
-  {
-    "id": 15,
-    "nameProduct": "gfgdg",
-    "price": 124,
-    "quantity": 1,
-    "img": "https://sweetalert2.github.io/images/SweetAlert2.png"
-  },
-  {
-    "id": 16
   }
 ]
