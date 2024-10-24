@@ -43,10 +43,10 @@ export const CarritoCompras = ({
 		// Mostrar confirmación con Swal antes de generar el PDF
 		Swal.fire({
 		  title: '¿Estás seguro?',
-		  text: "Confirma para generar y guardar la boleta.",
+		  text: "Confirma para generar la compra.",
 		  icon: 'warning',
 		  showCancelButton: true,
-		  confirmButtonText: 'Sí, generar Boleta',
+		  confirmButtonText: 'Comprar',
 		  cancelButtonText: 'Cancelar',
 		}).then((result) => {
 		  if (result.isConfirmed) {
@@ -67,10 +67,17 @@ export const CarritoCompras = ({
 			  doc.text(`Total: $${total}`, 14, yPosition);
 	  
 			  // Mostrar mensaje de éxito después de guardar el PDF
-			  Swal.fire("Compra realizada con éxito").then(() => {
+			  Swal.fire({
+				title: '¡Gracias por tu compra!',
+				text: 'No olvides guardar tu comprabante de pago.',
+				icon: 'success',
+				confirmButtonText: 'Generar Boleta',
+				customClass: {
+					popup: 'animated bounce'
+				}}).then(() => {
 				doc.save('Boleta.pdf');
 				onCleanCart(); // Limpiar el carrito después de cerrar el mensaje de éxito
-			  });
+			});
 	  
 			} catch (error) {
 			  // Si ocurre algún error, mostrar un mensaje de error
@@ -82,7 +89,13 @@ export const CarritoCompras = ({
 			}
 		  } else {
 			// Si el usuario cancela, mostrar un mensaje de cancelación opcional
-			Swal.fire("La compra fue cancelada.");
+			Swal.fire({
+				title: '¡Orden cancelada!',
+				text: 'Haz cancelado la compra.',
+				icon: 'error',
+				customClass: {
+					popup: 'animated bounce'
+				}});
 		  }
 		});
 	  };
