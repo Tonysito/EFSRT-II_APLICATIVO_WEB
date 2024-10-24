@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Swal from 'sweetalert2';
 
 const Registro = () => {
-
-    const navigate = useNavigate();
 
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -110,22 +108,35 @@ const Registro = () => {
     
             try {
                 console.log("Enviando datos al servidor...");
-                const response = await fetch('http://localhost:5000/usuarios', {
+                const response = await fetch('https://comerciape.netlify.app/usuarios.json', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(usuarioData),
                 });
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'Registro exitoso',
+                        text: 'Bienvenido/a ' + formData.firstName + ', ya puedes iniciar sesión',
+                        icon: 'success',
+                        confirmButtonText: 'Cerrar',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        customClass: {
+                            popup: 'animated bounce'
+                        }
+                    });
 
-                if (!response.ok) {
+
+                    window.location = '/Carrito';
+    
+         
+                } else {
                     throw new Error('Error en la respuesta del servidor');
                 }
 
-                sessionStorage.setItem('mensaje', 'Registro exitoso. ¡Bienvenido/a!');
-                console.log("Datos enviados y mensaje guardado en sessionStorage");
-                
-                navigate('/'); // Redirige a la página principal
             } catch (error) {
                 console.error('Error al registrar el usuario:', error);
                 alert('Hubo un error al conectar con el servidor.');
@@ -266,7 +277,7 @@ const Registro = () => {
                     />
                     {errors.phoneError && <div className="invalid-feedback">{errors.phoneError}</div>}
                 </div>
-                <button type="submit" className="btn btn-danger" disabled={isButtonDisabled}>Registrarme</button>
+                <button type="submit" className="btn btn-success btn-lg" onClick={handleSubmit} disabled={isButtonDisabled}>Registrarme</button>
             </form>
         </div>
     );

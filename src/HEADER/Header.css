@@ -4,6 +4,10 @@
     background-color: #ffffff;
     border-bottom: 2px solid #e0e0e0;
     padding: 10px 20px;
+    POSITION: fixed;
+    width: 100%;
+    z-index: 300;
+    top: 0;
 }
 
 .contenido-header {

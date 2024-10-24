@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CarritoCompras } from './components/CarritoCompras';
 import ProductList from './components/ProductList';
 import AgregarProducto from './AgregarProducto';
+import Swal from 'sweetalert2';
 import './Carrito.css';
 
 function Carrito() {
@@ -16,11 +17,35 @@ function Carrito() {
         const nombreGuardado = localStorage.getItem('usuarioNombre');
         const tipoUsuarioGuardado = localStorage.getItem('tipoUsuario');
 
+
         if (nombreGuardado) {
             setUsuarioNombre(nombreGuardado);
             setUserType(tipoUsuarioGuardado);
         }
+         // Verificar si hay tempData en localStorage
+         const tempData = localStorage.getItem('tempData');
+         if (tempData) {
+             // Parsear el objeto almacenado
+             const data = JSON.parse(tempData);
+                showAlert(data);
+             // Eliminar tempData del localStorage después de mostrarlo
+             localStorage.removeItem('tempData');
+         }
     }, []);
+
+    const showAlert = (data) => {
+        Swal.fire({
+            title: data.title,
+            text: data.text,
+            icon: data.icon,
+            confirmButtonText: 'Cerrar',
+            confirmButtonColor: '#4CAF50',
+            iconColor: '#4CAF50',
+            customClass: {
+                popup: 'animated bounce',
+            },
+        });
+    };
 
 
     return (
@@ -46,9 +71,6 @@ function Carrito() {
             {userType === 'Vendedor' && (
                 <AgregarProducto userType={userType} />
             )}
-
-
-            <div><p>Prueba 12</p></div>
         </>
     );
 }

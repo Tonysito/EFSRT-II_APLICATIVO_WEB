@@ -27,7 +27,7 @@ const Formulario = () => {
     // Cargar usuarios desde usuarios.json
     const fetchUsuarios = async () => {
       try {
-        const response = await fetch('http://localhost:5000/usuarios');
+        const response = await fetch('https://comerciape.netlify.app/usuarios.json');
         if (!response.ok) {
           throw new Error('Error al cargar usuarios');
         }
@@ -107,7 +107,9 @@ const Formulario = () => {
           }
         }).then((result) => {
           if (result.isConfirmed) {
-              navigate('/');
+            localStorage.getItem('usuarioNombre');
+            window.location = '/';
+            toggleRegisterForm();
           }
        });
       } else {
@@ -138,9 +140,9 @@ const Formulario = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        setUsuarioNombre(null);
         localStorage.removeItem('usuarioNombre');
-        navigate('/');
+        setUsuarioNombre(null);
+        window.location = '/';
       }
     });
   };

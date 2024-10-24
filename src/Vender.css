@@ -6,6 +6,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-top: 120px;
 }
 .img_banner_reg{
     width: 100%;

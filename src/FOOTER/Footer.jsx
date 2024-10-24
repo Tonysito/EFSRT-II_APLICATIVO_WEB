@@ -1,9 +1,13 @@
 import React from 'react';
 import './Footer.css'; 
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; // Importar SweetAlert
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+
   const handleSubscribe = (e) => {
     e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
 
@@ -14,7 +18,7 @@ const Footer = () => {
       confirmButtonText: 'Aceptar',
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = '/'; // Redirigir al inicio
+        navigate('/'); // Redirigir al inicio
       }
     });
   };
@@ -50,8 +54,8 @@ const Footer = () => {
         </div>
         <div>
           <h2>Cuenta</h2>
-          <a href="#emprendedor">Crear cuenta emprendedor</a>
-          <a href="#comprador">Crear cuenta</a>
+          <a href="#emprendedores">Crear cuenta emprendedor</a>
+          <a href="#compradores">Crear cuenta</a>
         </div>
         <div>
           <h2>Productos</h2>

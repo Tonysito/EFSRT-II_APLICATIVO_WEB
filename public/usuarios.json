@@ -1,32 +1,35 @@
 [
   {
     "id": 1,
-    "email": "lpereyrap@hotmail.com",
-    "password": "Leon1234$",
-    "companyName": "Leonidas",
+    "email": "leonralph3d@gmail.com",
+    "password": "LEon12345##",
+    "companyName": "Expoferias",
     "firstName": "Leonardo",
     "lastName": "Pereyra",
     "phone": "972778333",
-    "userType": "Vendedor"
+    "userType": "Comprador"
   },
   {
     "id": 2,
-    "email": "tony@chupapi.com",
-    "password": "Leon4321##",
-    "companyName": "Markitos chupapi",
+    "email": "leonralph3d@gmail.com",
+    "password": "kdeflsfffSD123##",
+    "companyName": "tonytony",
+    "firstName": "Leonardo",
+    "lastName": "Pereyra",
+    "phone": "972778333",
+    "userType": "Comprador"
+  },
+  {
+    "id": 3,
+    "email": "lpereyraexposistemas@gmail.com",
+    "password": "###derf345632SSSS",
+    "companyName": "Cacho Cacho Dame Dame",
     "firstName": "Leonardo",
     "lastName": "Pereyra",
     "phone": "972778333",
     "userType": "Vendedor"
   },
   {
-    "id": 3,
-    "email": "leonralph3d@gmail.com",
-    "password": "Leoncito123##",
-    "companyName": "Exposervice",
-    "firstName": "Leonardo",
-    "lastName": "Pereyra",
-    "phone": "972778333",
-    "userType": "Vendedor"
+    "id": 4
   }
 ]

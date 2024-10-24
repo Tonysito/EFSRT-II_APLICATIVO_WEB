@@ -40,6 +40,8 @@ header {
     padding: 30px 0 40px 0;
     max-width: 1200px;
     margin: auto;
+    position: relative;
+    top: 120px;
 }
 
 
@@ -148,6 +150,9 @@ header {
     grid-template-columns: repeat(4,1fr);
     margin: auto auto 80px;
     max-width: 1200px;
+    top: 120px;
+    position: relative;
+    padding-bottom: 80px;
 }
 
 .item {

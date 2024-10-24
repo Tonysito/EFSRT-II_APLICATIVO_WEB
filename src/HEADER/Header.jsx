@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'; // Importa SweetAlert
 import './Header.css';
 import Formulario from './Formulario';
 
+
 const Header = () => {
   const handleSearchKeyDown = (event) => {
     if (event.key === 'Enter') {
