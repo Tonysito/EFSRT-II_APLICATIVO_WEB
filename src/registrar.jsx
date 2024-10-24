@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Registro = () => {
+
+    const navigate = useNavigate();
+
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -10,7 +15,7 @@ const Registro = () => {
         firstName: '',
         lastName: '',
         phone: '',
-        userType: '' // Nuevo campo para tipo de usuario
+        userType: ''
     });
 
     const [errors, setErrors] = useState({
@@ -24,17 +29,21 @@ const Registro = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === 'phone' && value.length > 9) {
+            return; // No hacer nada si ya hay 9 caracteres
+        }
+
         setFormData({
             ...formData,
             [name]: value
         });
+        validateField(name, value);
     };
 
-    const validateForm = () => {
+    const validateField = (name,value) => {
         let valid = true;
         const newErrors = { ...errors };
 
-        // Validar correo electrónico
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             newErrors.emailError = 'El correo electrónico es inválido.';
@@ -43,7 +52,6 @@ const Registro = () => {
             newErrors.emailError = '';
         }
 
-        // Validar contraseña
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#@$!%*?&])[A-Za-z\d#@$!%*?&]{8,}$/;
         if (!passwordRegex.test(formData.password)) {
             newErrors.passwordError = 'La contraseña debe tener al menos 8 caracteres e incluir una letra mayúscula, una letra minúscula, un número y un carácter especial.';
@@ -52,8 +60,7 @@ const Registro = () => {
             newErrors.passwordError = '';
         }
 
-        // Validar nombre de la empresa
-        const companyNameRegex = /^[a-zA-Z0-9\s]{3,50}$/; // Alfanumérico, 3 a 50 caracteres
+        const companyNameRegex = /^[a-zA-Z0-9\s]{3,50}$/;
         if (!companyNameRegex.test(formData.companyName)) {
             newErrors.companyNameError = 'El nombre de la empresa debe tener entre 3 y 50 caracteres y solo puede incluir letras, números y espacios.';
             valid = false;
@@ -61,8 +68,7 @@ const Registro = () => {
             newErrors.companyNameError = '';
         }
 
-        // Validar nombre completo
-        const firstNameRegex = /^[a-zA-Z\s]{3,50}$/; // Solo letras y espacios, 3 a 50 caracteres
+        const firstNameRegex = /^[a-zA-Z\s]{3,50}$/;
         if (!firstNameRegex.test(formData.firstName)) {
             newErrors.firstNameError = 'El nombre debe tener entre 3 y 50 caracteres y solo puede incluir letras y espacios.';
             valid = false;
@@ -70,8 +76,7 @@ const Registro = () => {
             newErrors.firstNameError = '';
         }
 
-                // Validar apellido
-        const lastNameRegex = /^[a-zA-Z\s]{3,50}$/; // Solo letras y espacios, 3 a 50 caracteres
+        const lastNameRegex = /^[a-zA-Z\s]{3,50}$/;
         if (!lastNameRegex.test(formData.lastName)) {
             newErrors.lastNameError = 'El apellido debe tener entre 3 y 50 caracteres y solo puede incluir letras y espacios.';
             valid = false;
@@ -79,77 +84,54 @@ const Registro = () => {
             newErrors.lastNameError = '';
         }
 
-        // Validar teléfono
-        const phoneRegex = /^\d{9}$/; // Solo 9 dígitos
-        if (!phoneRegex.test(formData.phone)) {
-            newErrors.phoneError = 'El teléfono debe ser un número de 9 dígitos.';
-            valid = false;
-        } else {
-            newErrors.phoneError = '';
+        if (name === 'phone') {
+            const phoneRegex = /^\d{9}$/;
+            if (!phoneRegex.test(value)) {
+                newErrors.phoneError = 'El teléfono debe ser un número de 9 dígitos.';
+            } else {
+                newErrors.phoneError = '';
+            }
         }
-
+        setIsButtonDisabled(!valid);
         setErrors(newErrors);
+
         return valid;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Formulario enviado");
 
-        if (validateForm()) {
+        if (validateField()) {
             const usuarioData = {
-                id: Date.now(), // ID único basado en la fecha y hora actual
+                id: Date.now(),
                 ...formData,
             };
+    
+            try {
+                console.log("Enviando datos al servidor...");
+                const response = await fetch('http://localhost:5000/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(usuarioData),
+                });
 
-            // Guardar datos en el archivo usuarios.json
-            await fetch('https://comerciape.netlify.app/usuarios.json', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(usuarioData),
-            });
-            setFormData({
-                email: '',
-                password: '',
-                companyName: '',
-                firstName: '',
-                lastName: '',
-                phone: '',
-                userType: '' // Reiniciar el tipo de usuario
-            });
-            Swal.fire({
-                title: 'Registro exitoso',
-                text: 'Bienvenido/a ' + formData.firstName + ', ya puedes iniciar sesión',
-                icon: 'success',
-                confirmButtonText: 'Cerrar',
-                background: '#fff',
-                color: '#333',
-                confirmButtonColor: '#4CAF50',
-                iconColor: '#4CAF50',
-                customClass: {
-                    popup: 'animated bounce'
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
                 }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Redirigir a la página de inicio después de que se cierre el alert
-                    window.location.href = '/';
-                }
-            });
+
+                sessionStorage.setItem('mensaje', 'Registro exitoso. ¡Bienvenido/a!');
+                console.log("Datos enviados y mensaje guardado en sessionStorage");
+                
+                navigate('/'); // Redirige a la página principal
+            } catch (error) {
+                console.error('Error al registrar el usuario:', error);
+                alert('Hubo un error al conectar con el servidor.');
+            }
         } else {
-            Swal.fire({
-                title: '¡Error!',
-                text: 'Por favor, corrige los errores en el formulario.',
-                icon: 'error',
-                confirmButtonText: 'Cerrar',
-                background: '#fff',
-                color: '#333',
-                confirmButtonColor: '#ff4d4f',
-                iconColor: '#ff4d4f',
-                customClass: {
-                    popup: 'animated bounce'
-                }
-            });
+            alert("Por favor, complete todos los campos requeridos.");
         }
     };
 
@@ -158,13 +140,19 @@ const Registro = () => {
             <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
                 <h2 className="mb-4">Registro</h2>
                 <div className="mb-3">
-                    <label className="form-label">País/región:</label>
-                    <select className="form-select" name="country" value="Perú" disabled>
-                        <option value="Perú">Perú</option>
-                    </select>
+                <label htmlFor="country" className="form-label" >País/región:</label>
+                <select
+                    className="form-select"
+                    id="country"
+                    name="country"
+                    defaultValue="Perú"
+                    disabled
+                >
+                    <option value="Perú">Perú</option>
+                </select>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Rol comercial:</label>
+                    <span className="form-label">Rol comercial:</span>
                     <br/>
                     <div className="form-check form-check-inline">
                         <input
@@ -176,7 +164,7 @@ const Registro = () => {
                             checked={formData.userType === 'Comprador'}
                             onChange={handleChange}
                         />
-                        <label className="form-check-label" htmlFor="comprador">Comprador</label>
+                        <label htmlFor="comprador" className="form-check-label">Comprador</label>
                     </div>
                     <div className="form-check form-check-inline">
                         <input
@@ -188,86 +176,97 @@ const Registro = () => {
                             checked={formData.userType === 'Vendedor'}
                             onChange={handleChange}
                         />
-                        <label className="form-check-label" htmlFor="vendedor">Vendedor</label>
+                        <label htmlFor="vendedor" className="form-check-label">Vendedor</label>
                     </div>
                     
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Correo electrónico:</label>
+                    <label htmlFor="email" className="form-label">Correo electrónico:</label>
                     <input
                         type="email"
                         className={`form-control ${errors.emailError ? 'is-invalid' : ''}`}
+                        id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        autoComplete="email"
                     />
                     {errors.emailError && <div className="invalid-feedback">{errors.emailError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Contraseña:</label>
+                    <label htmlFor="password" className="form-label">Contraseña:</label>
                     <input
                         type="password"
                         className={`form-control ${errors.passwordError ? 'is-invalid' : ''}`}
+                        placeholder="Password"
+                        id="password"
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
-                        required
+                        required = {true}
+                        autoComplete="true"
                     />
                     {errors.passwordError && <div className="invalid-feedback">{errors.passwordError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Nombre de empresa:</label>
+                    <label htmlFor="companyName" className="form-label">Nombre de empresa:</label>
                     <input
                         type="text"
                         className={`form-control ${errors.companyNameError ? 'is-invalid' : ''}`}
+                        id="companyName"
                         name="companyName"
                         value={formData.companyName}
                         onChange={handleChange}
                         required
+                        autoComplete="organization"
                     />
                     {errors.companyNameError && <div className="invalid-feedback">{errors.companyNameError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Nombre:</label>
+                    <label htmlFor="firstName" className="form-label">Nombre:</label>
                     <input
                         type="text"
                         className={`form-control ${errors.firstNameError ? 'is-invalid' : ''}`}
+                        id="firstName"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
                         required
+                        autoComplete="given-name"
                     />
                     {errors.firstNameError && <div className="invalid-feedback">{errors.firstNameError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Apellido:</label>
+                    <label htmlFor="lastName" className="form-label">Apellidos:</label>
                     <input
                         type="text"
                         className={`form-control ${errors.lastNameError ? 'is-invalid' : ''}`}
+                        id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
                         required
+                        autoComplete="family-name"
                     />
                     {errors.lastNameError && <div className="invalid-feedback">{errors.lastNameError}</div>}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Teléfono:</label>
+                    <label htmlFor="phone" className="form-label">Teléfono:</label>
                     <input
-                        type="text"
+                        type="tel"
                         className={`form-control ${errors.phoneError ? 'is-invalid' : ''}`}
+                        id="phone"
                         name="phone"
-                        pattern="\d{9}"
                         value={formData.phone}
                         onChange={handleChange}
+                        maxLength={9}
                         required
-                        maxLength="9"
-                        placeholder="Número de 9 dígitos"
+                        autoComplete="tel"
                     />
                     {errors.phoneError && <div className="invalid-feedback">{errors.phoneError}</div>}
                 </div>
-                <button type="submit" className="btn btn-success">Aceptación y registro</button>
+                <button type="submit" className="btn btn-danger" disabled={isButtonDisabled}>Registrarme</button>
             </form>
         </div>
     );

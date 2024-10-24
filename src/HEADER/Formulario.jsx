@@ -107,9 +107,9 @@ const Formulario = () => {
           }
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/';
+              navigate('/');
           }
-        });
+       });
       } else {
         Swal.fire({
           title: '¡Error!',
@@ -140,7 +140,7 @@ const Formulario = () => {
       if (result.isConfirmed) {
         setUsuarioNombre(null);
         localStorage.removeItem('usuarioNombre');
-        window.location.href = '/';
+        navigate('/');
       }
     });
   };

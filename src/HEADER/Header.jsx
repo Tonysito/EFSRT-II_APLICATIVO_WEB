@@ -30,6 +30,7 @@ const Header = () => {
         </div>
         
         <input
+          id='text'
           className="barra-busqueda-header"
           type="text"
           placeholder="Buscar productos..."

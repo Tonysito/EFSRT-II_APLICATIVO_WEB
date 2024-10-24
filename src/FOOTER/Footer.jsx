@@ -67,9 +67,9 @@ const Footer = () => {
           <a href="#ayuda">Ayuda</a>
         </div>
         <div className="footer-register">
-          <h2>Recibe nuestras novedades</h2>
+          <label htmlFor='suscribe'><h2>Recibe nuestras novedades</h2></label>
           <form onSubmit={handleSubscribe}> {/* Agregar el manejador aquí */}
-            <input type="email" placeholder="Ingresa tu correo" required aria-label="Correo electrónico para registrarse" />
+            <input id='suscribe' type="email" placeholder="Ingresa tu correo" required autoComplete="email" aria-label="Correo electrónico para registrarse" />
             <button type="submit">Suscribirse</button>
           </form>
         </div>

@@ -1,8 +1,28 @@
 [
   {
     "id": 1,
+    "email": "lpereyrap@hotmail.com",
+    "password": "Leon1234$",
+    "companyName": "Leonidas",
+    "firstName": "Leonardo",
+    "lastName": "Pereyra",
+    "phone": "972778333",
+    "userType": "Vendedor"
+  },
+  {
+    "id": 2,
+    "email": "tony@chupapi.com",
+    "password": "Leon4321##",
+    "companyName": "Markitos chupapi",
+    "firstName": "Leonardo",
+    "lastName": "Pereyra",
+    "phone": "972778333",
+    "userType": "Vendedor"
+  },
+  {
+    "id": 3,
     "email": "leonralph3d@gmail.com",
-    "password": "Leon#1234",
+    "password": "Leoncito123##",
     "companyName": "Exposervice",
     "firstName": "Leonardo",
     "lastName": "Pereyra",
